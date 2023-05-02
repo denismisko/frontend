@@ -1,0 +1,21 @@
+@import "abstracts/functions";
+@import "abstracts/mixins";
+@import "abstracts/variables";
+
+@import "base/animations";
+@import "base/base";
+@import "base/typography";
+@import "base/utilities";
+
+@import '~bootstrap/dist/css/bootstrap.min.css';
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+@import '~font-awesome/css/font-awesome.min.css';
+
+
+.form-group {
+    margin: 20px 0;
+}
+
+.bg-navbar {
+    background-color: #2E323B;
+}

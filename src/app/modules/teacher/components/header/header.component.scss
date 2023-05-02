@@ -1,0 +1,155 @@
+.side-navbar {
+    background-color: #2E323B;
+    width: 330px;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: -330px;
+    overflow-x: hidden;
+
+    text-align: center;
+    color: #fff;
+}
+
+.side-nav-list {
+    padding-top: 60px;
+    margin-top: 30px;
+    li {
+        margin-bottom: 15px;
+    }
+}
+
+.side-nav-header {
+
+    background-color: #3F4350;
+    padding: 40px 0;
+
+    h1 {
+       font-size: 30px; 
+       margin-left: 98px;
+    }
+
+    img {
+        position: absolute;
+        top: 33px;
+        left: 18px;
+    }
+   
+}
+
+.side-nav-role {
+    text-align: left;
+    padding: 15px;
+    border-bottom: 2px solid #F28D51;
+
+    h2 {
+        font-size: 25px;
+    }
+}
+
+.side-navbar.open {
+    left: 0;
+}
+
+.side-navbar ul {
+    list-style-type: none;
+    padding: 0;
+    padding: 50px;
+    font-size: 20px;
+    font-weight: 300;
+    text-align: left;
+
+    a {
+        color: #fff;
+        text-decoration: none;
+        
+    }
+
+    i {
+        margin-right: 15px;
+    }
+}
+
+.side-navbar li {
+    padding: 8px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.main-content {
+    position: relative;
+    transition: transform 0.3s;
+}
+
+/* Add the styles for shifting the main content container */
+.main-content.shift-content {
+    transform: translateX(330px);
+}
+
+.navbar-shifted {
+    max-width: calc(100% - 330px);
+    margin-left: 330px;
+
+    nav {
+        left: 330px;
+    }
+}
+
+nav {
+    background-color: #2E323B;
+    height: 60px;
+    position: fixed;
+    inset: 0;
+    z-index: 5;
+
+    a {
+        color: #fff;
+    }
+}
+
+.user-info {
+    background-color: #F28D51;
+    padding:17px 30px;
+    text-align: right;
+    position: absolute;
+    top: -1.45em;
+    right: 0;
+
+    img {
+        margin-right: 10px;
+    }
+
+    a {
+        position: relative;
+        top: 13px;
+    }
+
+}
+
+.expandButton {
+    background-color: #F28D51;
+    padding: 15px 30px;
+    text-align: right;
+    position: absolute;
+    top: 0px;
+    left: 0;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.dropdown-menu {
+    position: relative;
+
+    right: 2px;
+
+    a {
+        color: #000;
+        right: 0;
+        text-align: center;
+    }
+}
+
+.navbar-toggler{
+    position: absolute;
+    right: 0;
+}

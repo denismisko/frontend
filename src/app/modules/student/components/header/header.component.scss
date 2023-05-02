@@ -1,0 +1,104 @@
+.side-navbar {
+    background-color: #2E323B;
+    width: 330px;
+    height: 100%;
+    position: fixed;
+    top: 60px;
+    left: -270px;
+    transition: left 0.3s;
+    color: #fff;
+    overflow-y: auto;
+}
+
+
+.side-nav-header {
+
+    background-color: #3F4350;
+    padding: 23px 40px;
+    text-align: left;
+   
+    h2 {
+        font-size: 20px;
+        position: relative;
+        top: 5px;
+    }
+
+}
+
+.side-nav-role {
+    text-align: left;
+    padding: 15px;
+}
+
+.side-navbar.open {
+    left: 0;
+}
+
+.main-content {
+    position: relative;
+    transition: transform 0.3s;
+}
+
+.main-content.shift-content {
+    transform: translateX(330px);
+}
+
+nav {
+    background-color: #2E323B;
+    height: 60px;
+    position: fixed;
+    right: 0;
+    left: 0;
+    z-index: 5;
+
+    a {
+        color: #fff;
+    }
+}
+
+.user-info {
+    background-color: #F28D51;
+    padding: 17px 30px;
+    text-align: right;
+    position: absolute;
+    top: -1.45em;
+    right: 0;
+
+    img {
+        margin-right: 10px;
+    }
+
+    a {
+        position: relative;
+        top: 13px;
+    }
+
+}
+
+.expandButton {
+    padding: 15px 30px;
+    position: fixed;
+    text-align: right;
+    top: 70px;
+    left:-10px; 
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 2;
+    transition: transform 0.3s ease;
+}
+
+.expandButton.expanded {
+    transform: translateX(270px);
+}
+
+.dropdown-menu {
+    position: relative;
+
+    right: 2px;
+
+    a {
+        color: #000;
+        right: 0;
+        text-align: center;
+    }
+}

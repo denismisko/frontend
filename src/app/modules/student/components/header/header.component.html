@@ -1,0 +1,36 @@
+<div class="side-navbar" [ngClass]="{'open': showSideNavbar}">
+  <div class="side-nav-header">
+    <h2>Tasks</h2>
+  </div>
+  <app-tasks [showHeaderAndClasses]="false" *ngIf="showSideNavbar" [isStudentView]="true"></app-tasks>
+</div>
+
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <a (click)="toggleSideNavbar()" class="expandButton" [ngClass]="{'expanded': showSideNavbar}" >
+        <i *ngIf="!showSideNavbar" class="bi bi-caret-right"></i>
+        <i *ngIf="showSideNavbar" class="bi bi-caret-left"></i>
+      </a>
+    <div class="navbar-container">
+        <a class="navbar-brand">1.N</a>
+    </div>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 user-info">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle"  role="button" (click)="showMenu = !showMenu" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="https://plus.unsplash.com/premium_photo-1679692887555-f82351217721?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60" alt="" width="50" style="border-radius: 50%;">
+             Denis Miškolci
+          </a>
+          <ul class="dropdown-menu" [class.show]="showMenu">
+            <li><a class="dropdown-item">Action</a></li>
+            <li><a class="dropdown-item">Another action</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" >Something else here</a></li>
+          </ul>
+        </li>
+     </ul>
+    </div>
+  </div>
+  </nav> 
+
+

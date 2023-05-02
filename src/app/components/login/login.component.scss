@@ -1,0 +1,131 @@
+
+.left {
+    background-color: #2E323B;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+
+.right {
+    background-color: #F1F2F6;
+}
+
+.card {
+    border: none;
+}
+
+.btn {
+    width: 100%;
+    background-color: #F28D51;
+    border: none;
+    border-radius: 100px;
+}
+
+.forgot-pasw,
+.remember-me {
+    font-size: 10px;
+    color: #999999;
+}
+
+.forgot-pasw {
+   position: relative;
+   right: -165px;
+   top: -20px;
+}
+
+a {
+    text-decoration: none;
+}
+
+.remember-me {
+    position: relative;
+    left: 0px;
+    top: -20px;
+
+    &[type="checkbox"]{
+        top: -17px;
+        margin-right: 10px;
+    }
+
+    &[type="checkbox"] {
+      appearance: none;
+      background-color: transparent;
+      border: 2px solid #FFA500;
+      border-radius: 5px;
+      width: 15px;
+      height: 15px;
+      cursor: pointer;
+      position: relative;
+    }
+
+   &[type="checkbox"]:checked {
+      background-color: #FFA500;
+    }
+
+   &[type="checkbox"]:focus {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(255, 165, 0, 0.5);
+    }
+
+   &[type="checkbox"]:checked::after {
+      content: "";
+      display: block;
+      position: absolute;
+      width: 5px;
+      height: 10px;
+      border: solid white;
+      border-width: 0 3px 3px 0;
+      transform: rotate(45deg);
+      top: 0px;
+      left: 4px;
+    }
+}
+
+.login{
+    color: #888888;
+
+    hr {
+        border: 1px solid;
+        position: relative;
+        top: -20px;
+        color: #F28D51;
+        opacity: .5;
+    }
+}
+
+.main-prologue {
+    text-align: left;
+    padding: 30px 45px;
+    position: relative;
+    top: 25%;
+
+    h2 {
+        line-height: 80px;
+        letter-spacing: 2px;
+        font-size: 30px;
+        color: #fff;
+
+        .brainboard {
+            color: #F28D51;
+        }
+    }
+}
+
+.google-log-in {
+    position: relative;
+    top: 10px;
+    color: #999999;
+    left: 22px;
+
+    img {
+        position: relative;
+        top:45px;
+        left: -65px;
+        margin-bottom: 15px;
+    }
+    
+}
+
+::placeholder {
+    font-size: 14px;
+    opacity: .5;
+}

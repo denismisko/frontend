@@ -1,0 +1,49 @@
+<div class="header">
+    <h3>Students</h3>
+</div>
+
+<div class="classes">
+
+    <ul class="text-center list-group">
+        <li class="list-item" *ngFor="let class of classes">
+            {{ class.class }}
+        </li>
+    </ul>
+
+</div>
+
+<div class="container">
+    <div class="box box1 students">
+        <div class="list-of-student">
+            <ul class="menu list-group">
+                <li class="student list-item" *ngFor="let student of students" (click)="onSelectedStudent(student)">
+                    {{ student.name }}
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="box box2">
+        <div class="information-about-student">
+            <h2>Information about {{ selectedStudentName }}</h2>
+             <div class="info">
+                <p>{{ selectedStudentName }}</p>
+                <p>{{ selectedStudentEmail }}</p>
+                <p>{{ selectedStudentPnumber }}</p>
+            </div>
+        </div>
+        <div class="students-edit-delete-btns">
+            <button class="btn btn-primary" *ngIf="selectedStudentName"><a routerLink="edit">Edit Student</a></button>
+            <button class="btn btn-danger" *ngIf="selectedStudentName"><a href="">Remove Student</a></button>
+        </div>
+    </div>
+    <div class="box box3">
+        <div class="statistic-about-student">
+            <h2>Statistic about {{ selectedStudentName }}</h2>
+            <div class="statistic">
+                <p *ngIf="selectedStudentName">Submitted tasks: {{ submittedTasks }}</p>
+                <p *ngIf="selectedStudentName">In progress tasks: {{ inProgressTasks }}</p>
+                <p *ngIf="selectedStudentName">Unsubmitted tasks: {{ unsubmittedTasks }}</p>
+            </div>
+        </div>
+    </div>
+</div>

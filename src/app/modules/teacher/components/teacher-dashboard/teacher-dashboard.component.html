@@ -1,0 +1,7 @@
+<app-header (sideNavbarToggled)="onSideNavbarToggled($event)"></app-header>
+
+<div class="main-content" [ngClass]="{'shift-content': showSideNavbar}">
+    <router-outlet ></router-outlet>
+</div>
+
+

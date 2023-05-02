@@ -1,0 +1,9 @@
+.main-content {
+    position: relative;
+    transition: transform 0.3s;
+}
+
+/* Add the styles for shifting the main content container */
+.main-content.shift-content {
+    transform: translateX(270px);
+}

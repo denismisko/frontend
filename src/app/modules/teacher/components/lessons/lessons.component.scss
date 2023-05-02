@@ -1,0 +1,93 @@
+.header {
+    width: 100%;
+    padding: 16px 40px;
+    margin-top: 60px;
+
+    background-color: #fff;
+
+    h3 {
+        font-size: 20px;
+    }
+
+}
+
+ul {
+    display: inline-block;
+
+    li {
+        list-style: none;
+        display: inline-block;
+        padding: 0 15px;
+        border-right: 1px solid black;
+
+        &:last-child {
+            border: none;
+        }
+
+    }
+
+}
+
+ul.menu {
+    display: block;
+
+    li.student {
+        border: none;
+        display: block;
+        line-height: 40px;
+        letter-spacing: 1px;
+        margin-bottom: 20px;
+        cursor: pointer;
+    }
+}
+
+.classes {
+    position: relative;
+    top: 25px;
+    text-align: center;
+}
+
+.row {
+    position: relative;
+    top: 55px;
+}
+
+.container {
+    max-width: 1440px;
+}
+
+.col-sm-3 {
+    background-color: #fff;
+    margin-right: 30px;
+    margin-bottom: 30px;
+    width: 330px;
+    
+    .lesson-container {
+        padding: 30px;
+
+        h2 {
+            font-size: 40px;
+        }
+
+        p {
+            padding-top: 15px;
+        }
+    }
+
+}
+
+.btn {
+    
+    position: relative;
+    top: 80px;
+    left: -5px;
+    background-color: #F28D51;
+    border-radius: 100px;
+    border: none;
+    width: 195px;
+    
+    a {
+        text-decoration: none;
+        color: #fff;
+    }
+}

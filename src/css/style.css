@@ -1,0 +1,20 @@
+@import url(~bootstrap/dist/css/bootstrap.min.css);
+@import url(~bootstrap-icons/font/bootstrap-icons.css);
+@import url(~font-awesome/css/font-awesome.min.css);
+html {
+  box-sizing: border-box;
+  scroll-behavior: smooth; }
+
+* {
+  margin: 0;
+  padding: 0; }
+
+body {
+  overflow-x: hidden;
+  background-color: #F8F8F8; }
+
+.form-group {
+  margin: 20px 0; }
+
+.bg-navbar {
+  background-color: #2E323B; }

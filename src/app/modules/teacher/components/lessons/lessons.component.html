@@ -1,0 +1,25 @@
+<div class="header">
+    <h3>Lessons</h3>
+</div>
+
+<div class="classes">
+
+    <ul class="text-center list-group">
+        <li class="list-item" *ngFor="let class of classes">
+            {{ class.class }}
+        </li>
+    </ul>
+
+</div>
+
+<div class="container text-center">
+  <div class="row" *ngFor="let lessonChunk of chunkArray(lessons, 4)">
+    <div class="col-sm-3" *ngFor="let lesson of lessonChunk">
+      <div class="lesson-container">
+        <h2>{{lesson.subject}}</h2>
+        <p>{{lesson.name}}</p>
+      </div>
+    </div>
+  </div>
+  <button class="btn"><a href="">Add a new lesson</a></button>
+</div>
