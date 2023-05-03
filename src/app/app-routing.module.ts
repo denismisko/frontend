@@ -10,12 +10,12 @@ const routes: Routes = [
   {path: '', redirectTo:'/login', pathMatch:'full'},
   {path: 'login', component: LoginComponent},
   {path: 'forgot-password', component: ForgotPasswordComponent},
-  {path:'admin', 
-    canActivate: [AuthGuard],
-    loadChildren: () => 
-    import('./modules/admin/admin.module').then((m) => m.AdminModule)},
-  {path:'student', loadChildren: () => import('./modules/student/student.module').then((m) => m.StudentModule)},
-  {path:'teacher', loadChildren:()=> import('./modules/teacher/teacher.module').then((m) => m.TeacherModule)},
+  {path:'student',
+      canActivate: [AuthGuard],
+      loadChildren: () => import('./modules/student/student.module').then((m) => m.StudentModule)},
+  {path:'teacher', 
+      canActivate: [AuthGuard],
+      loadChildren:()=> import('./modules/teacher/teacher.module').then((m) => m.TeacherModule)},
   {path: '**', component: NotFoundComponent},
 ];
 

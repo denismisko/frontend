@@ -2,6 +2,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { ClassesService } from 'src/app/modules/shared/classes.service';
 import { Tasks } from 'src/app/modules/shared/tasks/task';
 import { TasksService } from 'src/app/modules/shared/tasks/tasks.service';
+import { AuthService } from 'src/app/services/auth.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -21,12 +22,15 @@ export class HeaderComponent {
 
     tasks: Tasks[] = [];
 
-    constructor( private tasksService: TasksService) { }
+    constructor( private tasksService: TasksService,private authService: AuthService) { }
 
     ngOnInit():void {
      this.tasks = this.tasksService.getTasks();
     }
 
+     logout():void {
+     this.authService.logout();
+    } 
   
   truncateDescription(description: string, maxLength: number): string {
     return description.length > maxLength ? description.slice(0, maxLength) + '...' : description;

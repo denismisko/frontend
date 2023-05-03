@@ -28,12 +28,12 @@ export class AuthService {
   }
 
  login({ email, password }: any): Observable<any> {
-  if (email === 'admin' && password === 'admin123') {
+  if (email === 'teacher' && password === 'teacher123') {
     this.setToken('abcdefghijklmnopqrstuvwxyz');
-    return of({ name: 'Tarique Akhtar', email: 'admin@gmail.com', role: 'admin' });
+    return of({ name: 'Roland Onofrej', email: 'teacher@gmail.com', role: 'teacher' });
   } else if (email === 'student' && password === 'student123') {
     this.setToken('user-token-xyz');
-    return of({ name: 'John Doe', email: 'user@example.com', role: 'user' });
+    return of({ name: 'Jakub Kočan', email: 'student@example.com', role: 'student' });
   }
   return throwError(new Error('Failed to login'));
 }

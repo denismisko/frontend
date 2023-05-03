@@ -17,20 +17,18 @@ export class LoginComponent implements OnInit{
 
   constructor(private auth: AuthService, private router: Router) {}
 
-  
+
   ngOnInit():void {
-      if (this.auth.isLoggedIn()) {
-        this.router.navigate(['admin']);
-      }
+
   }
   
   onSubmit(): void {
   if (this.loginForm.valid) {
     this.auth.login(this.loginForm.value).subscribe(
       (result) => {
-        if (result.role === 'admin') {
+        if (result.role === 'teacher') {
           this.router.navigate(['teacher']);
-        } else if (result.role === 'user') {
+        } else if (result.role === 'student') {
           this.router.navigate(['student']);
         }
       },
