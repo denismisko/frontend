@@ -21,17 +21,17 @@ export class StudentsComponent {
   selectedStudentName : string = "";
   selectedStudentEmail : string = "";
   selectedStudentPnumber : string = "";
-  inProgressTasks: number = 0;
-  submittedTasks: number = 0;
-  unsubmittedTasks: number = 0;
+  // inProgressTasks: number = 0;
+  // submittedTasks: number = 0;
+  // unsubmittedTasks: number = 0;
 
   onSelectedStudent(student: Students):void {
       this.selectedStudentName = student.name;
       this.selectedStudentEmail = student.email;
       this.selectedStudentPnumber = student.pnumber;
-      this.inProgressTasks = student.inProgressTasks;
-      this.submittedTasks = student.submittedTasks;
-      this.unsubmittedTasks = student.unsubmittedTasks;
+      // this.inProgressTasks = student.inProgressTasks;
+      // this.submittedTasks = student.submittedTasks;
+      // this.unsubmittedTasks = student.unsubmittedTasks;
     };
 
     ngOnInit(): void {

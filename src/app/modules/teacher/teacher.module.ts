@@ -11,6 +11,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
 import { StudentEditComponent } from './components/students/student-edit/student-edit.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { AddLessonComponent } from './components/lessons/add-lesson/add-lesson.component';
 
 
 
@@ -23,6 +24,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     DashboardComponent,
     HeaderComponent,
     StudentEditComponent,
+    AddLessonComponent,
   ],
   imports: [
     CommonModule,

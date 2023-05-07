@@ -1,0 +1,27 @@
+@mixin header {
+    width: 100%;
+    padding: 16px 40px;
+    margin-top: 60px;
+    
+    background-color: #fff;
+    
+    h3 {
+        font-size: 20px;
+    }
+}
+
+@mixin button {
+    background-color: #F28D51;
+    border-radius: 100px;
+    border: none;
+    width: 195px;
+    
+    a {
+        text-decoration: none;
+        color: #fff;
+    }
+}
+
+@mixin button-focus {
+    background-color: #F28D51;
+}

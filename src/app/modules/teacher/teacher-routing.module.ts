@@ -7,11 +7,13 @@ import { LessonsComponent } from './components/lessons/lessons.component';
 import { TasksComponent } from './components/tasks/tasks.component';
 import { StudentsComponent } from './components/students/students.component';
 import { StudentEditComponent } from './components/students/student-edit/student-edit.component';
+import { AddLessonComponent } from './components/lessons/add-lesson/add-lesson.component';
 
 const routes: Routes = [
   {path: '', component: TeacherDashboardComponent, children: [
     {path:'dashboard', component: DashboardComponent},
     {path:'lessons', component: LessonsComponent},
+    {path:'lessons/add-lesson', component: AddLessonComponent},
     {path:'tasks', component:TasksComponent},
     {path:'students', component: StudentsComponent},
     {path:'students/edit',component: StudentEditComponent},

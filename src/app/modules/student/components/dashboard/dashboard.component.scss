@@ -5,8 +5,8 @@
 
 .col {
     position: relative;
-    left: 215px;
-    width: 100%;
+    left: 210px;
+    max-width:100%;
     background-color: #323232; 
     color: white;
     text-align: left;
@@ -38,6 +38,7 @@ ul {
         display: inline-block;
         padding: 0 15px;
         border-right: 1px solid black ;
+        
         &:last-child {
             border: none;
         }

@@ -1,7 +1,7 @@
 @import "../../../../../../sass/abstracts/mixins";
 
 .header {
-   @include header;
+    @include header;
 }
 
 .card {
@@ -9,13 +9,13 @@
     margin-top: 40px;
 }
 
- .input-group {
-     background-color: #fff;
- }
+.input-group {
+    background-color: #fff;
+}
 
- .form-control {
-     height: 72px;
- }
+.form-control {
+    height: 72px;
+}
 
 .submit-btn {
     display: flex;

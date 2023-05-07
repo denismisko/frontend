@@ -1,29 +1,8 @@
-.header {
-    width: 100%;
-    padding: 16px 40px;
-    margin-top: 60px;
-
-    background-color: #fff;
-
-    h3 {
-        font-size: 20px;
-    }
-
-}
+@import "../../../../../sass/abstracts/mixins";
 
 .header {
-    width: 100%;
-    padding: 16px 40px;
-    margin-top: 60px;
-
-    background-color: #fff;
-
-    h3 {
-        font-size: 20px;
-    }
-
+    @include header;
 }
-
 
 ul {
     display: inline-block;
@@ -203,21 +182,22 @@ ul.menu {
     }
 
     .row {
-        left: 80px;
+        margin-left: 80px;
     }
+}
+
+
+.submit-btn {
+    display: flex;
+    justify-content: center;
 }
 
 .btn {
     position: relative;
     top: 80px;
-    left: -5px;
-    background-color: #F28D51;
-    border-radius: 100px;
-    border: none;
-    width: 195px;
+    @include button;
 
-    a {
-        text-decoration: none;
-        color: #fff;
+    &:focus {
+        @include button-focus;
     }
 }

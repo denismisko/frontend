@@ -1,3 +1,6 @@
+section {
+    padding: 20px;
+}
 
 .left {
     background-color: #2E323B;
@@ -26,10 +29,15 @@
     color: #999999;
 }
 
+.flex{
+    display: flex;
+    
+}
+
 .forgot-pasw {
-   position: relative;
-   right: -165px;
-   top: -20px;
+    margin-left: auto;
+    position: relative;
+    top: -17px;
 }
 
 a {
@@ -38,9 +46,8 @@ a {
 
 .remember-me {
     position: relative;
-    left: 0px;
-    top: -20px;
-
+    top: -17px;
+   
     &[type="checkbox"]{
         top: -17px;
         margin-right: 10px;
@@ -76,7 +83,7 @@ a {
       border-width: 0 3px 3px 0;
       transform: rotate(45deg);
       top: 0px;
-      left: 4px;
+      left: 3px;
     }
 }
 
@@ -94,38 +101,36 @@ a {
 
 .main-prologue {
     text-align: left;
-    padding: 30px 45px;
+    padding: 30px 0;
     position: relative;
     top: 25%;
+    text-align: center;
 
     h2 {
         line-height: 80px;
         letter-spacing: 2px;
         font-size: 30px;
         color: #fff;
+        text-indent: -70px;
 
         .brainboard {
             color: #F28D51;
         }
-    }
-}
 
-.google-log-in {
-    position: relative;
-    top: 10px;
-    color: #999999;
-    left: 22px;
-
-    img {
-        position: relative;
-        top:45px;
-        left: -65px;
-        margin-bottom: 15px;
     }
-    
 }
 
 ::placeholder {
     font-size: 14px;
     opacity: .5;
+}
+
+@media screen and (max-width:990px) {
+    .d-none {
+        display: none !important;
+    }
+
+    .right {
+        width: 100%;
+    }
 }
