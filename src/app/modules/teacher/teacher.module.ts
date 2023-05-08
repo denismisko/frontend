@@ -12,6 +12,8 @@ import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
 import { StudentEditComponent } from './components/students/student-edit/student-edit.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AddLessonComponent } from './components/lessons/add-lesson/add-lesson.component';
+import { AddTaskComponent } from './components/tasks/add-task/add-task.component';
+import { ReviewsComponent } from './components/reviews/reviews.component';
 
 
 
@@ -25,6 +27,8 @@ import { AddLessonComponent } from './components/lessons/add-lesson/add-lesson.c
     HeaderComponent,
     StudentEditComponent,
     AddLessonComponent,
+    AddTaskComponent,
+    ReviewsComponent
   ],
   imports: [
     CommonModule,

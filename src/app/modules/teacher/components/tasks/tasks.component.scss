@@ -70,18 +70,18 @@ ul {
 
 }
 
-ul.menu {
-    display: block;
+// ul.menu {
+//     display: block;
 
-    li.student {
-        border: none;
-        display: block;
-        line-height: 40px;
-        letter-spacing: 1px;
-        margin-bottom: 20px;
-        cursor: pointer;
-    }
-}
+//     li.student {
+//         border: none;
+//         display: block;
+//         line-height: 40px;
+//         letter-spacing: 1px;
+//         margin-bottom: 20px;
+//         cursor: pointer;
+//     }
+// }
 
 .classes {
     position: relative;
@@ -144,7 +144,7 @@ ul.menu {
         bottom: 10px;
         left: 13px;
     }
-        
+    
     .priority-1,
     .priority-2,
     .priority-3 {
@@ -172,7 +172,7 @@ ul.menu {
 
 .student-view {
     .col-sm-3 {
-        width: 260px;
+        width: 330px;
         right: 49px;
         color: #000;
     }

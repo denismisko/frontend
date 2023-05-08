@@ -6,7 +6,7 @@
     top: 0;
     left: -330px;
     overflow-x: hidden;
-
+    transition: all 0.5s;
     text-align: center;
     color: #fff;
 }
@@ -78,12 +78,13 @@
 
 .main-content {
     position: relative;
-    transition: transform 0.3s;
+
 }
 
 /* Add the styles for shifting the main content container */
 .main-content.shift-content {
     transform: translateX(330px);
+    
 }
 
 .navbar-shifted {
@@ -101,6 +102,7 @@ nav {
     position: fixed;
     inset: 0;
     z-index: 5;
+    transition:all  0.5s;
 
     a {
         color: #fff;

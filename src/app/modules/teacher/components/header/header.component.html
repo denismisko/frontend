@@ -1,44 +1,81 @@
-<div class="side-navbar" [ngClass]="{'open': showSideNavbar}">
+<div class="side-navbar" [ngClass]="{ open: showSideNavbar }">
   <div class="side-nav-header">
-    <img src="https://plus.unsplash.com/premium_photo-1679692887555-f82351217721?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60" alt="" width="84" style="border-radius: 50%;">
-    <h1> Denis Miškolci</h1>
+    <img
+      src="https://plus.unsplash.com/premium_photo-1679692887555-f82351217721?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60"
+      alt=""
+      width="84"
+      style="border-radius: 50%"
+    />
+    <h1>Denis Miškolci</h1>
   </div>
   <div class="side-nav-role">
-      <h2>Teacher</h2>
+    <h2>Teacher</h2>
   </div>
   <ul class="side-nav-list">
-    <li><a routerLink="./"><i class="bi bi-speedometer"></i>Dashboard</a></li>
-    <li><a routerLink="./tasks"><i class="bi bi-list-task"></i>Tasks</a></li>
-    <li><a routerLink="./students"><i class="bi bi-people"></i>Students</a></li>
-    <li><a routerLink="./lessons"><i class="bi bi-clock"></i>Lessons</a></li>
+    <li>
+      <a routerLink="./"><i class="bi bi-speedometer"></i>Dashboard</a>
+    </li>
+    <li>
+      <a routerLink="./tasks"><i class="bi bi-list-task"></i>Tasks</a>
+    </li>
+    <li>
+      <a routerLink="./students"><i class="bi bi-people"></i>Students</a>
+    </li>
+    <li>
+      <a routerLink="./lessons"><i class="bi bi-clock"></i>Lessons</a>
+    </li>
+    <li>
+      <a routerLink="./reviews"><i class="bi bi-calendar-check"></i>Reviews</a>
+    </li>
   </ul>
 </div>
 
-<div class="main-content" [ngClass]="{'navbar-shifted': showSideNavbar}">
+<div class="main-content" [ngClass]="{ 'navbar-shifted': showSideNavbar }">
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
-    <a (click)="toggleSideNavbar()" class="expandButton">
+      <a (click)="toggleSideNavbar()" class="expandButton">
         <i class="bi bi-list"></i>
-    </a>
-     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 user-info">
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false" (click)="showDropdownMenu = !showDropdownMenu">
-            <img src="https://plus.unsplash.com/premium_photo-1679692887555-f82351217721?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60" alt="" width="50" style="border-radius: 50%;">
-            Denis Miškolci
-          </a>
-          <ul class="dropdown-menu" [class.show]="showDropdownMenu">
-            <li><a class="dropdown-item" href="#" (click)="logout()">Logout</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        </li>
-      </ul>
+      </a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 user-info">
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+              (click)="showDropdownMenu = !showDropdownMenu"
+            >
+              <img
+                src="https://plus.unsplash.com/premium_photo-1679692887555-f82351217721?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60"
+                alt=""
+                width="50"
+                style="border-radius: 50%"
+              />
+              Denis Miškolci
+            </a>
+            <ul class="dropdown-menu" [class.show]="showDropdownMenu">
+              <li>
+                <a class="dropdown-item" href="#" (click)="logout()">Logout</a>
+              </li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><hr class="dropdown-divider" /></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
     </div>
-  </div>
-</nav> 
+  </nav>
 </div>

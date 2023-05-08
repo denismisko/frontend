@@ -6,7 +6,7 @@
 
 .card {
     border: none !important;
-    margin-top: 40px;
+    margin: 40px 0;
 }
 
 .input-group {
@@ -17,6 +17,11 @@
     height: 72px;
 }
 
+.submit-btn {
+    display: flex;
+    justify-content: center;
+}
+
 .btn {
     position: relative;
     @include button;
@@ -25,3 +30,4 @@
         @include button-focus;
     }
 }
+

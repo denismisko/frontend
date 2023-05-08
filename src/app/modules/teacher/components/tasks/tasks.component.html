@@ -15,14 +15,14 @@
 <div class="container text-center" [ngClass]="{'student-view': isStudentView}">
   <div class="row" *ngFor="let tasksChunk of chunkArray(tasks, 4)">
     <div class="col-sm-3" *ngFor="let task of tasksChunk">
-        <h2 class="title">{{ truncateDescription(task.title, 80) }}</h2>
-        <p class="lesson-and-class">{{ task.lesson }} <span>|</span> {{task.class}}</p>
+        <h2 class="title">{{ truncateDescription(task.title, 24) }}</h2>
+        <p class="lesson-and-class">{{ task.lesson }}</p>
         <span class="priority-number" [ngClass]="getPriorityClass(task)">{{ task.priority }}</span>
         <a href=""><i class="bi bi-caret-down-square"></i></a>
     </div>
   </div>
   <div class="submit-btn">
-        <button class="btn btn-success">Add a task</button>
+        <button class="btn btn-success" *ngIf="showHeaderAndClasses" routerLink="add-task">Add a task</button>
   </div>
 </div>
 

@@ -11,18 +11,10 @@ export class StudentsService {
     {
       "name":"Denis Miškolci", 
       "email":"macka@gmail.com", 
-      "pnumber":"0951111111",
-      "submittedTasks":5, 
-      "unsubmittedTasks":8, 
-      "inProgressTasks":4
     },
     {
       "name":"Jakub Kočan", 
       "email":"pes@gmail.com", 
-      "pnumber":"0911111111", 
-      "submittedTasks":8, 
-      "unsubmittedTasks":4, 
-      "inProgressTasks":4
     },
   ];
 
