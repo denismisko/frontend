@@ -5,33 +5,7 @@
 }
 
 ul {
-    display: inline-block;
-
-    li {
-        list-style: none;
-        display: inline-block;
-        padding: 0 15px;
-        border-right: 1px solid black;
-
-        &:last-child {
-            border: none;
-        }
-
-    }
-
-}
-
-ul.menu {
-    display: block;
-
-    li.student {
-        border: none;
-        display: block;
-        line-height: 40px;
-        letter-spacing: 1px;
-        margin-bottom: 20px;
-        cursor: pointer;
-    }
+   @include classes;
 }
 
 .classes {
@@ -45,15 +19,8 @@ ul.menu {
     top: 55px;
 }
 
-.container-fluid {
-    max-width: 1440px;
-}
-
-.col-sm-3 {
-    background-color: #fff;
-    margin-right: 30px;
-    margin-bottom: 30px;
-    width: 330px;
+.col-lg-3{
+    @include col-lg-3;
     
     .lesson-container {
         padding: 30px;
@@ -84,11 +51,12 @@ ul.menu {
 .submit-btn {
     display: flex;
     justify-content: center;
+    
 }
 
 .btn {
     position: relative;
-    top: 80px;
+    margin: 40px 0;
     @include button;
 
     &:focus {

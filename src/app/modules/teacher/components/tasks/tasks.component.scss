@@ -5,83 +5,8 @@
 }
 
 ul {
-    display: inline-block;
-
-    li {
-        list-style: none;
-        display: inline-block;
-        padding: 0 15px;
-        border-right: 1px solid black;
-
-        &:last-child {
-            border: none;
-        }
-
-    }
-
+  @include classes;
 }
-
-ul.menu {
-    display: block;
-
-    li.student {
-        border: none;
-        display: block;
-        line-height: 40px;
-        letter-spacing: 1px;
-        margin-bottom: 20px;
-        cursor: pointer;
-    }
-}
-
-.classes {
-    position: relative;
-    top: 25px;
-    text-align: center;
-}
-
-.header {
-    width: 100%;
-    padding: 16px 40px;
-    margin-top: 60px;
-
-    background-color: #fff;
-
-    h3 {
-        font-size: 20px;
-    }
-
-}
-
-ul {
-    display: inline-block;
-
-    li {
-        list-style: none;
-        display: inline-block;
-        padding: 0 15px;
-        border-right: 1px solid black;
-
-        &:last-child {
-            border: none;
-        }
-
-    }
-
-}
-
-// ul.menu {
-//     display: block;
-
-//     li.student {
-//         border: none;
-//         display: block;
-//         line-height: 40px;
-//         letter-spacing: 1px;
-//         margin-bottom: 20px;
-//         cursor: pointer;
-//     }
-// }
 
 .classes {
     position: relative;
@@ -94,18 +19,11 @@ ul {
     top: 55px;
 }
 
-.container {
-    max-width: 1410px;
-}
-
-.col-sm-3 {
-    background-color: #fff;
-    margin-right: 30px;
-    margin-bottom: 30px;
+.col-lg-3 {
+    @include col-lg-3;
     position: relative;
     height: 167px;
-    width: 330px;
-
+ 
     &:last-child {
         margin-right: 0;
     }
@@ -170,22 +88,29 @@ ul {
 
 }
 
+//! Student view
 .student-view {
-    .col-sm-3 {
+    .col-lg-3 {
         width: 330px;
-        right: 49px;
+
         color: #000;
+        margin-bottom: 30px;
+
+        margin-right: 0;
+
+        &:last-child {
+            margin-bottom: 100px;
+        }
     }
 
     .lesson-and-class {
-        right: 49px;
+        display: flex;
+        justify-content: center;
     }
 
-    .row {
-        margin-left: 80px;
-    }
+
 }
-
+//!
 
 .submit-btn {
     display: flex;
@@ -194,7 +119,9 @@ ul {
 
 .btn {
     position: relative;
-    top: 80px;
+    margin-top: 70px;
+    margin-bottom: 20px;
+
     @include button;
 
     &:focus {

@@ -3,3 +3,92 @@
 .header {
     @include header;
 }
+
+ul {
+    @include classes;
+}
+
+.classes {
+    position: relative;
+    top: 25px;
+    text-align: center;
+}
+
+.row {
+    position: relative;
+    top: 55px;
+}
+
+.col-lg-3 {
+    @include col-lg-3;
+    position: relative;
+    height: 167px;
+    
+
+    &:last-child {
+        margin-right: 0;
+    }
+
+    a {
+        color: #000;
+        position: absolute;
+        bottom: 10px;
+        right: 13px;
+        font-size: 20px;
+    }
+
+    h2 {
+        font-size: 25px;
+    }
+
+    .title {
+        padding: 10px;
+    }
+
+    .lesson-and-class {
+        display: inline-block;
+        background-color: #F28D51;
+        width: 162px;
+        position: absolute;
+        top: 75px;
+        right: 85px;
+
+        span {
+            padding: 0 10px;
+        }
+    }
+
+    .priority-number {
+        position: absolute;
+        bottom: 10px;
+        left: 13px;
+    }
+
+    .priority-1,
+    .priority-2,
+    .priority-3 {
+        width: 27px;
+        height: 27px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .priority-1 {
+        background-color: #99FF69;
+    }
+
+    .priority-2 {
+        background-color: #FBF44B;
+    }
+
+    .priority-3 {
+        background-color: #FB4B4E;
+    }
+
+}
+
+.name-of-student {
+    margin-top: 120px;
+}

@@ -14,8 +14,6 @@ export class LessonsService {
     {subject:"Pro",name:"Roland Onofrej"},
     {subject:"Pro",name:"Roland Onofrej"},
     {subject:"Pro",name:"Roland Onofrej"},
-    {subject:"Pro",name:"Roland Onofrej"},
-    {subject:"Pro",name:"Roland Onofrej"},
 
   ];
 

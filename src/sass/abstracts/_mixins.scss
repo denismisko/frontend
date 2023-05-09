@@ -25,3 +25,26 @@
 @mixin button-focus {
     background-color: #F28D51;
 }
+
+@mixin classes {
+    display: inline-block;
+    
+        li {
+            list-style: none;
+            display: inline-block;
+            padding: 0 15px;
+            border-right: 1px solid black;
+    
+            &:last-child {
+                border: none;
+            }
+    
+        }
+}
+
+@mixin col-lg-3 {
+    background-color: #fff;
+    margin-right: 30px;
+    margin-bottom: 30px;
+    width: 330px;
+}
