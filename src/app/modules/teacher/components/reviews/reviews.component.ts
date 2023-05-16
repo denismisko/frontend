@@ -27,5 +27,6 @@ export class ReviewsComponent {
 
   getPriorityClass(task: Tasks): string {
       return this.utilityService.getPriorityClass(task);
+
   }
 }

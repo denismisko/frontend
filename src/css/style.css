@@ -1,6 +1,7 @@
 @import url(~bootstrap/dist/css/bootstrap.min.css);
 @import url(~bootstrap-icons/font/bootstrap-icons.css);
 @import url(~font-awesome/css/font-awesome.min.css);
+
 html {
   box-sizing: border-box;
   scroll-behavior: smooth; }

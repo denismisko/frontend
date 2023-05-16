@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit{
 
   loginForm = new FormGroup({
-    email:new FormControl(''),
+    username:new FormControl(''),
     password: new FormControl(''),
   }); 
 
@@ -24,7 +24,8 @@ export class LoginComponent implements OnInit{
   
   onSubmit(): void {
   if (this.loginForm.valid) {
-    this.auth.login(this.loginForm.value).subscribe(
+    const { username, password } = this.loginForm.value;
+    this.auth.login({ username, password } as { username: string, password: string }).subscribe(
       (result) => {
         if (result.role === 'teacher') {
           this.router.navigate(['teacher']);
@@ -32,12 +33,12 @@ export class LoginComponent implements OnInit{
           this.router.navigate(['student']);
         }
       },
-      (err: Error) => {
-        alert(err.message);
+      (err) => {
+        alert(err.error);
       }
     );
   }
 }
   
-  }
+}
 

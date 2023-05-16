@@ -1,14 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Observable, of, throwError } from 'rxjs';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-
-   constructor(private router: Router) {}
 
   setToken(token: string): void {
     localStorage.setItem('token', token);
@@ -27,15 +26,12 @@ export class AuthService {
     this.router.navigate(['login']);
   }
 
- login({ email, password }: any): Observable<any> {
-  if (email === 'teacher' && password === 'teacher123') {
-    this.setToken('abcdefghijklmnopqrstuvwxyz');
-    return of({ name: 'Roland Onofrej', email: 'teacher@gmail.com', role: 'teacher' });
-  } else if (email === 'student' && password === 'student123') {
-    this.setToken('user-token-xyz');
-    return of({ name: 'Jakub Kočan', email: 'student@example.com', role: 'student' });
+ private apiUrl = 'http://localhost:8080'; // Replace with your backend API URL
+
+  constructor(private http: HttpClient, private router: Router) {} // Injected Router
+
+  login(credentials: { username: string, password: string }): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/login`, credentials);
   }
-  return throwError(new Error('Failed to login'));
-}
 
 }
