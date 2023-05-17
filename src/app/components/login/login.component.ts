@@ -27,10 +27,13 @@ export class LoginComponent implements OnInit{
     const { username, password } = this.loginForm.value;
     this.auth.login({ username, password } as { username: string, password: string }).subscribe(
       (result) => {
+        console.log(result.role)
         if (result.role === 'teacher') {
+          console.log("Navigating to teacher")
           this.router.navigate(['teacher']);
         } else if (result.role === 'student') {
-          this.router.navigate(['student']);
+          console.log("Navigating to student")
+          this.router.navigate(['student'])
         }
       },
       (err) => {

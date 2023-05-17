@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Observable, of, throwError } from 'rxjs';
+import { Observable, map, of, tap, throwError } from 'rxjs';
 import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaderResponse } from '@angular/common/http';
+import { write } from '@popperjs/core';
 
 
 @Injectable({
@@ -31,7 +32,15 @@ export class AuthService {
   constructor(private http: HttpClient, private router: Router) {} // Injected Router
 
   login(credentials: { username: string, password: string }): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/login`, credentials);
+    return this.http.post<any>(`${this.apiUrl}/login`, credentials, { observe: 'response' }).pipe(
+      tap(response => {
+        const authHeader = response.headers.get('Authorization');
+        if (authHeader) {
+          const token = authHeader.split(' ')[1]; // Assuming 'Bearer <token>' format
+          this.setToken(token);
+        }
+      }),
+      map(response => response.body)  // map the full HttpResponse to its body
+    );
   }
-
 }
