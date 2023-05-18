@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, map, of, tap, throwError } from 'rxjs';
+import {Observable, map, of, tap, throwError, catchError} from 'rxjs';
 import { Router } from '@angular/router';
 import { HttpClient, HttpHeaderResponse } from '@angular/common/http';
 import { write } from '@popperjs/core';
@@ -27,7 +27,7 @@ export class AuthService {
     this.router.navigate(['login']);
   }
 
- private apiUrl = 'http://localhost:8080'; // Replace with your backend API URL
+ private apiUrl = 'http://10.2.130.81:8080'; // Replace with your backend API URL
 
   constructor(private http: HttpClient, private router: Router) {} // Injected Router
 
@@ -40,7 +40,14 @@ export class AuthService {
           this.setToken(token);
         }
       }),
-      map(response => response.body)  // map the full HttpResponse to its body
+      map(response => response.body), // map the full HttpResponse to its body
+      catchError(error => {
+        if (error.status === 401) {
+          throw new Error('Nesprávne meno alebo heslo.');
+        } else {
+          throw new Error('Prihlásenie zlyhalo.');
+        }
+      })
     );
   }
 }
