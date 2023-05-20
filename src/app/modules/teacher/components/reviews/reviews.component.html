@@ -17,9 +17,7 @@
     <div class="col-lg-3 col-md-4 col-sm-6 col-12" *ngFor="let task of chunk">
       <h2 class="title">{{ task.title }}</h2>
       <p class="lesson-and-class">{{ task.lesson }}</p>
-      <span class="priority-number" [ngClass]="getPriorityClass(task)">{{
-        task.priority
-      }}</span>
+
       <a href=""><i class="bi bi-caret-down-square"></i></a>
       <div class="name-of-student">
         <p>Denis Miškolci</p>

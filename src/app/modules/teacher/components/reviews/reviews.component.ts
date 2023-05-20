@@ -24,9 +24,4 @@ export class ReviewsComponent {
     this.tasks = this.taskService.getTasks();
     this.chunkedTasks = this.utilityService.chunkArray(this.tasks, 3)
   }
-
-  getPriorityClass(task: Tasks): string {
-      return this.utilityService.getPriorityClass(task);
-
-  }
 }

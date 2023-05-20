@@ -1,53 +1,46 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output, TemplateRef, ViewChild } from '@angular/core';
 import { ClassesService } from 'src/app/modules/shared/classes.service';
 import { Tasks } from 'src/app/modules/shared/tasks/task';
 import { TasksService } from 'src/app/modules/shared/tasks/tasks.service';
 import { AuthService } from 'src/app/services/auth.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { TasksComponent } from 'src/app/modules/teacher/components/tasks/tasks.component';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
+  showMenu = false;
 
-    showMenu = false;
+  showSideNavbar = false;
 
-    showSideNavbar = false;
-    @Output() sideNavbarToggled = new EventEmitter<boolean>();
+  @Output() sideNavbarToggled = new EventEmitter<boolean>();
 
-    toggleSideNavbar() {
-      this.showSideNavbar = !this.showSideNavbar;
-      this.sideNavbarToggled.emit(this.showSideNavbar);
-    }
+  toggleSideNavbar() {
+    this.showSideNavbar = !this.showSideNavbar;
+    this.sideNavbarToggled.emit(this.showSideNavbar);
+  }
 
-    tasks: Tasks[] = [];
+  tasks: Tasks[] = [];
 
-    constructor( private tasksService: TasksService,private authService: AuthService) { }
+  constructor(
+    private tasksService: TasksService,
+    private authService: AuthService,
+  ) {}
 
-    ngOnInit():void {
-     this.tasks = this.tasksService.getTasks();
-    }
+  ngOnInit(): void {
+    this.tasks = this.tasksService.getTasks();
+  }
 
-     logout():void {
-     this.authService.logout();
-    } 
-  
+  logout(): void {
+    this.authService.logout();
+  }
+
   truncateDescription(description: string, maxLength: number): string {
-    return description.length > maxLength ? description.slice(0, maxLength) + '...' : description;
+    return description.length > maxLength
+      ? description.slice(0, maxLength) + '...'
+      : description;
   }
 
-    getPriorityClass(task: Tasks): string {
-    switch (task.priority) {
-      case "1":
-        return 'priority-1';
-      case "2":
-        return 'priority-2';
-      case "3":
-        return 'priority-3';
-      default:
-        return '';
-    }
-  }
-
-    
 }

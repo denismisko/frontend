@@ -1,11 +1,5 @@
 <div class="side-navbar" [ngClass]="{ open: showSideNavbar }">
   <div class="side-nav-header">
-    <img
-      src="https://plus.unsplash.com/premium_photo-1679692887555-f82351217721?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60"
-      alt=""
-      width="84"
-      style="border-radius: 50%"
-    />
     <h1>Denis Miškolci</h1>
   </div>
   <div class="side-nav-role">
@@ -57,21 +51,12 @@
               aria-expanded="false"
               (click)="showDropdownMenu = !showDropdownMenu"
             >
-              <img
-                src="https://plus.unsplash.com/premium_photo-1679692887555-f82351217721?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60"
-                alt=""
-                width="50"
-                style="border-radius: 50%"
-              />
               Denis Miškolci
             </a>
             <ul class="dropdown-menu" [class.show]="showDropdownMenu">
               <li>
                 <a class="dropdown-item" href="#" (click)="logout()">Logout</a>
               </li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><hr class="dropdown-divider" /></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
             </ul>
           </li>
         </ul>

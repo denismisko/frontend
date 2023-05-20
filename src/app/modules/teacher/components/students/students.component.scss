@@ -5,143 +5,153 @@
 }
 
 ul {
-    @include classes;
+  @include classes;
 }
 
 ul.menu {
+  display: block;
+
+  li.student {
+    border: none;
     display: block;
-   
-    li.student  {
-        border: none;
-        display: block;
-        // line-height: 40px;
-        letter-spacing: 1px;
-        margin-bottom: 20px;
-        cursor: pointer;
-    }
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+    cursor: pointer;
+  }
 }
 
 .classes {
-    position: relative;
-    top: 25px;
-    text-align: center;
+  position: relative;
+  top: 25px;
+  text-align: center;
 }
 
 .container {
-    display: grid;
-    grid-template-columns: 1fr 4fr;
-    grid-template-rows: 1fr;
-    grid-template-areas:
-        "box1 box2"
-        "box1 box3";
-    gap: 10px;
-    width: 100%;
-    margin-top: 50px;
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  grid-template-rows: 1fr;
+  grid-template-areas:
+    "box1 box2"
+    "box1 box3";
+  gap: 10px;
+  width: 100%;
+  margin-top: 50px;
 }
 
 .box {
-    display: flex;
-    font-family: Arial, sans-serif;
-    font-size: 18px;
-    color: white;
-    overflow: auto;
-    padding-top: 20px;
+  display: flex;
+  font-family: Arial, sans-serif;
+  font-size: 18px;
+  color: white;
+  overflow: auto;
+  padding-top: 20px;
 
-    h2 {
-        font-size: 20px;
-        text-align: center;
-    }
+  h2 {
+    font-size: 20px;
+    text-align: center;
+  }
 }
 
 .box1,
 .box2,
 .box3 {
-    background-color: #fff;
-    color: #000;
-    height: 370px;
+  background-color: #fff;
+  color: #000;
+  height: 370px;
 }
 
 .box1 {
-    text-align: left;
-    justify-content: center;
+  text-align: left;
+  justify-content: center;
 }
 
 .box2 {
-    grid-area: box2;
-    text-align: center;
-    justify-content: center;
-    position: relative;
+  grid-area: box2;
+  text-align: center;
+  justify-content: center;
+  position: relative;
 }
 
 .students-edit-delete-btns {
-    display: flex;
-    flex-direction: column;
-    gap: 37px;
-    position: absolute;
-    top: 150px;
-    right: 80px;
-
-    .btn {
-        position: relative;
-        border-radius: 100px;
-        background-color: #F28D51;
-        border-color: transparent;
-
-        a {
-            color: #fff;
-            text-decoration: none;
-            font-size: 16px;
-        }
-    }
-
+  display: flex;
+  flex-direction: column;
+  gap: 37px;
+  position: absolute;
+  top: 150px;
+  right: 80px;
 }
 
-.info{
-    position:absolute;
-    text-align: left;
-    top: 150px;
-    left: 80px;
-    font-size: 16px;
+.btn {
+  position: relative;
+  border-radius: 100px;
+  background-color: #f28d51;
+  border-color: transparent;
+  color: white;
 }
 
-// .statistic p {
-//     margin-bottom: 40px;
-// }
+.close {
+    background-color: transparent !important;
+    color: #000;
+}
+
+.info {
+  position: absolute;
+  text-align: left;
+  top: 150px;
+  left: 80px;
+  font-size: 16px;
+}
 
 .box3 {
+  text-align: center;
+  justify-content: center;
+  position: relative;
+}
+
+// media queries
+
+@media screen and (max-width: 768px) {
+  .container {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+      "box1"
+      "box2";
+  }
+
+  .info {
+    top: 150px;
+    left: 80px;
+  }
+
+  .students-edit-delete-btns {
+    top: 150px;
+    right: 80px;
+  }
+}
+
+@media screen and (max-width: 458px) {
+  .info {
     text-align: center;
+  }
+
+  .students-edit-delete-btns {
     justify-content: center;
-    position: relative;
+  }
 }
 
-// media queries 
-
-@media screen and (max-width:768px) {
-    .container {
-            grid-template-columns: 1fr;
-            grid-template-rows: auto auto;
-            grid-template-areas:
-                "box1"
-                "box2";
-        }
-
-        .info {
-            top: 150px;
-            left: 80px;
-        }
-
-        .students-edit-delete-btns {
-            top: 150px;
-            right: 80px;
-        }
+.centeredModal .modal-dialog {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-@media screen and (max-width:458px) {
-    .info {
-        text-align: center;
-    }
+.modal-title{
+    color: #f28d51;
+}
 
-    .students-edit-delete-btns {
-       justify-content: center;
-    }
+.modal-footer {
+  display: flex;
+  justify-content: center;
+
 }

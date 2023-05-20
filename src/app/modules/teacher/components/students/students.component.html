@@ -33,22 +33,37 @@
       </div>
     </div>
     <div class="students-edit-delete-btns">
-      <button class="btn btn-primary" *ngIf="selectedStudentName">
-        <a routerLink="edit">Edit Student</a>
+      <button class="btn btn-primary" routerLink="edit" *ngIf="selectedStudentName">
+        Edit Student
       </button>
-      <button class="btn btn-danger" *ngIf="selectedStudentName">
-        <a href="">Remove Student</a>
+      <button class="btn btn-danger" *ngIf="selectedStudentName" (click)="openModal(selectedStudentName)">
+        Remove Student
       </button>
+
+       <ng-template #content let-modal>
+        <div class="modal-header text-center">
+          <h4 class="modal-title">Delete</h4>
+        </div>
+        <div class="modal-body">
+          Are you sure you want to delete {{ selectedStudentName }}?
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn close"
+            (click)="modal.close('Close click')"
+          >
+            Close
+          </button>
+          <button
+            type="button"
+            class="btn"
+            (click)="modal.close('Close click')"
+          >
+            Remove
+          </button>
+        </div>
+      </ng-template>
     </div>
   </div>
-  <!-- <div class="box box3">
-        <div class="statistic-about-student">
-            <h2>Statistic about {{ selectedStudentName }}</h2>
-            <div class="statistic">
-                <p *ngIf="selectedStudentName">Submitted tasks: {{ submittedTasks }}</p>
-                <p *ngIf="selectedStudentName">In progress tasks: {{ inProgressTasks }}</p>
-                <p *ngIf="selectedStudentName">Unsubmitted tasks: {{ unsubmittedTasks }}</p>
-            </div>
-        </div>
-    </div> -->
 </div>

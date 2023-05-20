@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 export class TeacherDashboardComponent {
 
-   showSideNavbar = false;
+  showSideNavbar = false;
 
   onSideNavbarToggled(showSideNavbar: boolean) {
     this.showSideNavbar = showSideNavbar;

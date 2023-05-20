@@ -48,3 +48,17 @@
     margin-bottom: 30px;
     width: 330px;
 }
+
+@mixin user-info {
+    background-color: #F28D51;
+    padding: 17px 30px;
+    text-align: right;
+    position: absolute;
+    top: -0.9em;
+    right: 0;
+    
+    a {
+        position: relative;
+        top: 10px;
+    }
+}

@@ -1,3 +1,5 @@
+@import "../../../../../sass/abstracts/mixins";
+
 .side-navbar {
     background-color: #2E323B;
     width: 330px;
@@ -29,7 +31,6 @@
 
     h1 {
        font-size: 30px; 
-       margin-left: 98px;
     }
 
     img {
@@ -111,22 +112,7 @@ nav {
 }
 
 .user-info {
-    background-color: #F28D51;
-    padding:17px 30px;
-    text-align: right;
-    position: absolute;
-    top: -1.45em;
-    right: 0;
-
-    img {
-        margin-right: 10px;
-    }
-
-    a {
-        position: relative;
-        top: 13px;
-    }
-
+    @include user-info;
 }
 
 .expandButton {
