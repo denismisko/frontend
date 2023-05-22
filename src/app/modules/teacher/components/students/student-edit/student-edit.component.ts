@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Students } from 'src/app/modules/shared/students/students';
 import { StudentsService } from 'src/app/modules/shared/students/students.service';
@@ -8,6 +8,9 @@ import { StudentsService } from 'src/app/modules/shared/students/students.servic
   templateUrl: './student-edit.component.html',
   styleUrls: ['./student-edit.component.scss'],
 })
-export class StudentEditComponent {
+export class StudentEditComponent implements OnInit {
 
+  ngOnInit(): void {
+    
+  }
 }
