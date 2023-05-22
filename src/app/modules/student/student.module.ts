@@ -12,8 +12,8 @@ import { TeacherModule } from '../teacher/teacher.module';
 @NgModule({
   declarations: [
     StudentDashboardComponent,
-    DashboardComponent,
     HeaderComponent,
+    DashboardComponent
   ],
   imports: [
     CommonModule,

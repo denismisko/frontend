@@ -1,24 +1,21 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { Students } from './students';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
+export class StudentsService implements OnInit {
 
-export class StudentsService {
+  constructor(private http: HttpClient) {}
 
-  private students: Students[] = [
-    {
-      "name":"Denis Miškolci", 
-      "email":"macka@gmail.com", 
-    },
-    {
-      "name":"Jakub Kočan", 
-      "email":"pes@gmail.com", 
-    },
+   students: Students[] = [
   ];
 
-  constructor() { }
+  ngOnInit(): void {
+    
+  }
 
   getStudents(): Students[] {
     return this.students;

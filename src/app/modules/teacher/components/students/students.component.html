@@ -37,7 +37,7 @@
         Edit Student
       </button>
       <button class="btn btn-danger" *ngIf="selectedStudentName" (click)="openModal(selectedStudentName)">
-        Remove Student
+        Delete Student
       </button>
 
        <ng-template #content let-modal>
@@ -60,7 +60,7 @@
             class="btn"
             (click)="modal.close('Close click')"
           >
-            Remove
+            Delete
           </button>
         </div>
       </ng-template>

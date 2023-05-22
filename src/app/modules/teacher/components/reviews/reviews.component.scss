@@ -58,37 +58,31 @@ ul {
         }
     }
 
-    .priority-number {
-        position: absolute;
-        bottom: 10px;
-        left: 13px;
-    }
-
-    .priority-1,
-    .priority-2,
-    .priority-3 {
-        width: 27px;
-        height: 27px;
-        border-radius: 50%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .priority-1 {
-        background-color: #99FF69;
-    }
-
-    .priority-2 {
-        background-color: #FBF44B;
-    }
-
-    .priority-3 {
-        background-color: #FB4B4E;
-    }
-
 }
 
 .name-of-student {
     margin-top: 120px;
+}
+
+.modal-footer {
+   
+    display: flex;
+    justify-content: center;
+
+    & button {
+        margin-top: 5px;
+        color: #fff;
+    }
+}
+
+.btn {
+    position: relative;
+    margin-top: 70px;
+    margin-bottom: 20px;
+
+    @include button;
+
+    &:focus {
+        @include button-focus;
+    }
 }
