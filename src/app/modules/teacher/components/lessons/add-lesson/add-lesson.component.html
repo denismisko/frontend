@@ -5,7 +5,7 @@
 <div class="container col-lg-6 mb-5 mb-lg-0">
   <div class="card">
     <div class="card-body py-5 px-md-5">
-      <form>
+      <form [formGroup]="subjectForm" (ngSubmit)="onSubmit()">
         <div class="d-flex flex-column align-items-center justify-content-center">
           <div class="col-md-6 mb-4">
             <div class="form-outline">
@@ -15,6 +15,7 @@
                 id="title"
                 class="form-control"
                 placeholder="Title of lesson"
+                formControlName="title"
               />
             </div>
           </div>
@@ -22,12 +23,7 @@
           <div class="col-md-6 mb-4">
             <div class="form-outline mb-4">
               <label class="form-label" for="select-class">Class</label>
-              <select name="" class="form-select form-control" id="select-class">
-                <option selected>1.N/2.N/3.N</option>
-                <option value="class1">1.N</option>
-                <option value="class2">2.N</option>
-                <option value="class3">3.N</option>
-              </select>
+              <input type="text" class="form-control" formControlName="classTitle">
             </div>
           </div>
 

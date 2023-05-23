@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { StudentsService } from 'src/app/modules/shared/students/students.service';
@@ -8,8 +8,8 @@ import { StudentsService } from 'src/app/modules/shared/students/students.servic
   templateUrl: './student-add.component.html',
   styleUrls: ['./student-add.component.scss'],
 })
-export class StudentAddComponent {
-  
+export class StudentAddComponent implements OnInit {
+
   studentForm!: FormGroup;
 
   constructor(
@@ -35,4 +35,5 @@ export class StudentAddComponent {
         this.router.navigate(['/teacher/students'])
       });
   }
+
 }
