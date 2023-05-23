@@ -23,6 +23,12 @@
         </li>
       </ul>
     </div>
+    
+  </div>
+  <div class="text-center">
+    <button class="btn" routerLink="add">
+      Add
+    </button>
   </div>
   <div class="box box2">
     <div class="information-about-student">
@@ -37,7 +43,7 @@
         Edit Student
       </button>
       <button class="btn btn-danger" *ngIf="selectedStudentName" (click)="openModal(selectedStudentName)">
-        Remove Student
+        Delete Student
       </button>
 
        <ng-template #content let-modal>
@@ -60,7 +66,7 @@
             class="btn"
             (click)="modal.close('Close click')"
           >
-            Remove
+            Delete
           </button>
         </div>
       </ng-template>

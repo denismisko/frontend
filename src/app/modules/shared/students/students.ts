@@ -1,9 +1,7 @@
 export interface Students {
+  username: string;
   name: string;
-  email: string;
-  // pnumber: string;
-  // inProgressTasks: number;
-  // submittedTasks: number;
-  // unsubmittedTasks: number;
+  surname: string;
+  classTitle:string;
+  email:string;
 }
-

@@ -1,11 +1,11 @@
 <div class="header">
-  <h3>Edit a Student</h3>
+  <h3>Add a student</h3>
 </div>
 
 <div class="container col-lg-6 mb-5 mb-lg-0">
   <div class="card">
     <div class="card-body py-5 px-md-5">
-      <form>
+      <form [formGroup]="studentForm" (ngSubmit)="onSubmit()">
         <div class="row">
           <div class="col-md-6 mb-4">
             <div class="form-outline">
@@ -15,6 +15,7 @@
                 id="name"
                 class="form-control"
                 placeholder="First name"
+                formControlName="name"
               />
             </div>
           </div>
@@ -27,6 +28,7 @@
                 id="surname"
                 class="form-control"
                 placeholder="Last name"
+                formControlName="surname"
               />
             </div>
           </div>
@@ -40,6 +42,7 @@
                 id="username"
                 class="form-control"
                 placeholder="Username"
+                formControlName="username"
               />
             </div>
           </div>
@@ -53,15 +56,16 @@
                 type="text"
                 name="select-class"
                 class="form-control"
-                placeholder="1.N/2.N/3.N"
                 id="select-class"
+                placeholder="1.N/2.N/3.N"
+                formControlName="classTitle"
               />
             </div>
           </div>
         </div>
 
         <div class="submit-btn">
-          <button type="submit" class="btn btn-success">Edit</button>
+          <button type="submit" class="btn btn-success">Add</button>
         </div>
       </form>
     </div>

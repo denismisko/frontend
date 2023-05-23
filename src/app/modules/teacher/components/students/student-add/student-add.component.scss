@@ -1,0 +1,32 @@
+@import "../../../../../../sass/abstracts/mixins";
+
+.header {
+   @include header;
+}
+
+.card {
+    border: none !important;
+    margin-top: 40px;
+}
+
+ .input-group {
+     background-color: #fff;
+ }
+
+ .form-control {
+     height: 72px;
+ }
+
+.submit-btn {
+    display: flex;
+    justify-content: center;
+}
+
+.btn {
+    position: relative;
+    @include button;
+
+    &:focus {
+        @include button-focus;
+    }
+}

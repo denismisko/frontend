@@ -17,8 +17,26 @@
     <div class="col-lg-3 col-md-4 col-sm-6 col-12" *ngFor="let task of chunk">
       <h2 class="title">{{ task.title }}</h2>
       <p class="lesson-and-class">{{ task.lesson }}</p>
-
-      <a href=""><i class="bi bi-caret-down-square"></i></a>
+      <a  (click)="openModal(task)"
+        ><i class="bi bi-caret-down-square"></i
+      ></a>
+  <ng-template #content let-modal>
+        <div class="modal-header text-center">
+          <h4 class="modal-title">Git</h4>
+        </div>
+        <div class="modal-body">
+          <a href="https://gitlab.kosickaakademia.sk/" target="_blank">https://gitlab.kosickaakademia.sk/</a>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-outline-dark"
+            (click)="modal.close('Close click')"
+          >
+            Close
+          </button>
+        </div>
+      </ng-template>
       <div class="name-of-student">
         <p>Denis Miškolci</p>
       </div>

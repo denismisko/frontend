@@ -1,13 +1,15 @@
-import {Injectable} from '@angular/core';
-import {Observable, map, tap, catchError} from 'rxjs';
-import {Router} from '@angular/router';
-import {HttpClient} from '@angular/common/http';
+
+import { Injectable, OnInit } from '@angular/core';
+import { Observable, map, of, tap, throwError, catchError } from 'rxjs';
+import { Router } from '@angular/router';
+import { HttpClient, HttpHeaderResponse } from '@angular/common/http';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 
-export class AuthService {
+export class AuthService implements OnInit{
+
   setToken(token: string): void {
     localStorage.setItem('token', token);
   }
@@ -32,10 +34,13 @@ export class AuthService {
       });
   }
 
-
   private apiUrl = 'http://localhost:8080'; // Replace with your backend API URL
 
   constructor(private http: HttpClient, private router: Router) { } // Injected Router
+
+  ngOnInit(): void {
+    
+  }
 
   login(credentials: { username: string, password: string }): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/login`, credentials, {observe: 'response'}).pipe(
@@ -58,4 +63,5 @@ export class AuthService {
       })
     );
   }
+
 }

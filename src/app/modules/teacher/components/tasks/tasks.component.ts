@@ -35,7 +35,7 @@ export class TasksComponent {
     private classesService: ClassesService,
     private tasksService: TasksService,
     private utilityService: UtilityService,
-    private modalService: NgbModal
+    private modalService: NgbModal,
   ) {}
 
   ngOnInit(): void {
@@ -53,8 +53,7 @@ export class TasksComponent {
   openModal(task: any) {
     this.selectedTask = task;
     this.modalService.open(this.content, {
-      centered: true,
-      windowClass: 'centeredModal',
+      centered: true
     });
   }
 }

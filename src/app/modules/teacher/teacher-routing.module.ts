@@ -10,19 +10,25 @@ import { StudentEditComponent } from './components/students/student-edit/student
 import { AddLessonComponent } from './components/lessons/add-lesson/add-lesson.component';
 import { AddTaskComponent } from './components/tasks/add-task/add-task.component';
 import { ReviewsComponent } from './components/reviews/reviews.component';
+import { StudentAddComponent } from './components/students/student-add/student-add.component';
 
 const routes: Routes = [
-  {path: '', component: TeacherDashboardComponent, children: [
-    {path:'dashboard', component: DashboardComponent},
-    {path:'lessons', component: LessonsComponent},
-    {path:'lessons/add-lesson', component: AddLessonComponent},
-    {path:'tasks', component:TasksComponent},
-    {path:"tasks/add-task", component:AddTaskComponent},
-    {path:'students', component: StudentsComponent},
-    {path:'students/edit',component: StudentEditComponent},
-    {path:'reviews', component: ReviewsComponent},
-    {path:'', redirectTo:'/teacher/dashboard', pathMatch:'full'}
-  ]},
+  {
+    path: '',
+    component: TeacherDashboardComponent,
+    children: [
+      { path: 'dashboard', component: DashboardComponent },
+      { path: 'lessons', component: LessonsComponent },
+      { path: 'lessons/add-lesson', component: AddLessonComponent },
+      { path: 'tasks', component: TasksComponent },
+      { path: 'tasks/add-task', component: AddTaskComponent },
+      { path: 'students', component: StudentsComponent },
+      { path: 'students/edit', component: StudentEditComponent },
+      { path: 'students/add', component: StudentAddComponent },
+      { path: 'reviews', component: ReviewsComponent },
+      { path: '', redirectTo: '/teacher/dashboard', pathMatch: 'full' },
+    ],
+  },
 ];
 
 @NgModule({

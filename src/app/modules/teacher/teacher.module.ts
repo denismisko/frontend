@@ -14,6 +14,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AddLessonComponent } from './components/lessons/add-lesson/add-lesson.component';
 import { AddTaskComponent } from './components/tasks/add-task/add-task.component';
 import { ReviewsComponent } from './components/reviews/reviews.component';
+import { StudentAddComponent } from './components/students/student-add/student-add.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -28,17 +30,18 @@ import { ReviewsComponent } from './components/reviews/reviews.component';
     StudentEditComponent,
     AddLessonComponent,
     AddTaskComponent,
-    ReviewsComponent
+    ReviewsComponent,
+    StudentAddComponent,
   ],
   imports: [
     CommonModule,
     TeacherRoutingModule,
     NgbCollapseModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [NgbCollapseModule],
-  exports: [
-    TasksComponent
-  ],
+  exports: [TasksComponent],
 })
-export class TeacherModule { }
+export class TeacherModule {}
