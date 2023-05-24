@@ -24,8 +24,8 @@ export class TasksComponent {
   classes: Classes[] = [];
   tasks: Tasks[] = [];
   chunkedTasks: Tasks[][] = [];
-  classTitle!: string | null;
 
+  classTitle!: string | null;
   selectedTask: any;
 
   @ViewChild('content') content!: ElementRef;
@@ -46,9 +46,6 @@ export class TasksComponent {
     this.classes = this.classesService.getClasses();
     this.tasks = this.tasksService.getTasks();
     this.chunkedTasks = this.utilityService.chunkArray(this.tasks, 3);
-    this.route.paramMap.subscribe((params) => {
-      this.classTitle = params.get('classTitle');
-    });
   }
 
   truncateDescription(description: string, maxLength: number): string {

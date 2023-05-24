@@ -31,8 +31,9 @@ export class StudentAddComponent implements OnInit {
     this.studentService
       .addStudent(this.studentForm.value)
       .subscribe((response) => {
-        console.log(this.studentForm);
-        this.router.navigate(['/teacher/students']);
+        this.router.navigate(['/teacher/students']).then(() => {
+          window.location.reload();
+        })
         alert('Student was successfully added!');
       });
   }

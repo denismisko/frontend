@@ -18,6 +18,7 @@ export class StudentsComponent {
   @ViewChild('content') content!: ElementRef;
 
   selectedStudent: any;
+  classTitle!: string | null;
 
   constructor(
     private studentsService: StudentsService,
@@ -26,11 +27,13 @@ export class StudentsComponent {
   ) {}
 
   selectedStudentName: string = '';
-  selectedStudentEmail: string = '';
+  selectedStudentSurname: string = '';
+  selectedStudentUsername: string = '';
 
   onSelectedStudent(student: Students): void {
     this.selectedStudentName = student.name;
-    this.selectedStudentEmail = student.email;
+    this.selectedStudentSurname = student.surname;
+    this.selectedStudentUsername = student.username;
   }
 
   ngOnInit(): void {
@@ -43,6 +46,16 @@ export class StudentsComponent {
     this.modalService.open(this.content, {
       centered: true,
       windowClass: 'centeredModal',
+    });
+  }
+
+  onClassClick(classTitle: string): void {
+    this.studentsService.getStudent(classTitle).subscribe((tasks) => {
+      if (tasks && tasks.length) {
+        this.students = tasks;
+      } else {
+        this.students = [];
+      }
     });
   }
 }

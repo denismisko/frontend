@@ -1,7 +1,7 @@
 import { Injectable, OnInit } from '@angular/core';
 import { Students } from './students';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -21,50 +21,24 @@ export class StudentsService implements OnInit {
     return this.http.post<any>(`${this.apiUrl}/student`, student, httpOptions);
   }
 
-  students: Students[] = [
-    {
-      username: 'Denis',
-      name: 'Jozo',
-      surname: 'coze',
-      email: 'jakoo',
-      classTitle: '1.N',
-    },
-    {
-      username: 'Denis',
-      name: 'Jozo',
-      surname: 'coze',
-      email: 'jakoo',
-      classTitle: '1.N',
-    },
-    {
-      username: 'Denis',
-      name: 'Jozo',
-      surname: 'coze',
-      email: 'jakoo',
-      classTitle: '1.N',
-    },
-    {
-      username: 'Denis',
-      name: 'Jozo',
-      surname: 'coze',
-      email: 'jakoo',
-      classTitle: '1.N',
-    },
-    {
-      username: 'Denis',
-      name: 'Jozo',
-      surname: 'coze',
-      email: 'jakoo',
-      classTitle: '1.N',
-    },
-    {
-      username: 'Denis',
-      name: 'Jozo',
-      surname: 'coze',
-      email: 'jakoo',
-      classTitle: '1.N',
-    },
-  ];
+  getStudent(classTitle: string): Observable<Students[]> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+      }),
+    };
+    return this.http
+      .get<Students[]>(`${this.apiUrl}/student/${classTitle}`, httpOptions)
+      .pipe(
+        map((student: Students[]) => {
+          this.students = student;
+          return this.students;
+        })
+      );
+  }
+
+  students: Students[] = [];
 
   ngOnInit(): void {}
 

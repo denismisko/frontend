@@ -4,7 +4,7 @@
 
 <div class="classes">
   <ul class="text-center list-group">
-    <li class="list-item" *ngFor="let class of classes">
+    <li class="list-item" *ngFor="let class of classes" (click)="onClassClick(class.class)">
       {{ class.class }}
     </li>
   </ul>
@@ -19,7 +19,7 @@
           *ngFor="let student of students"
           (click)="onSelectedStudent(student)"
         >
-          {{ student.name }}
+          {{ student.name }} {{ student.surname}}
         </li>
       </ul>
     </div>
@@ -32,10 +32,10 @@
   </div>
   <div class="box box2">
     <div class="information-about-student">
-      <h2>Information about {{ selectedStudentName }}</h2>
+      <h2>Information about {{ selectedStudentName }} {{ selectedStudentSurname }}</h2>
       <div class="info">
-        <p>{{ selectedStudentName }}</p>
-        <p>{{ selectedStudentEmail }}</p>
+        <p>{{ selectedStudentName }} {{ selectedStudentSurname }}</p>
+        <p>{{ selectedStudentUsername }}</p>
       </div>
     </div>
     <div class="students-edit-delete-btns">
@@ -51,7 +51,7 @@
           <h4 class="modal-title">Delete</h4>
         </div>
         <div class="modal-body">
-          Are you sure you want to delete {{ selectedStudentName }}?
+          Are you sure you want to delete {{ selectedStudentName }} {{ selectedStudentSurname }}?
         </div>
         <div class="modal-footer">
           <button
