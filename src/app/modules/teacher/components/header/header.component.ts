@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { faL } from '@fortawesome/free-solid-svg-icons';
+import { Students } from 'src/app/modules/shared/students/students';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({

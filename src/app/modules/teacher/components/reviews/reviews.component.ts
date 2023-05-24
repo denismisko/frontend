@@ -21,6 +21,7 @@ export class ReviewsComponent {
   chunkedTasks: Tasks[][] = []; // utilityService - dokaze udrziavat hodnotu comlumns v jednom riadku, napr 3 etc.
 
   selectedTask: any;
+  classTitle!: string | null;
 
   @ViewChild('content') content!: ElementRef;
 
@@ -50,6 +51,18 @@ export class ReviewsComponent {
     this.selectedTask = task;
     this.modalService.open(this.content, {
       centered: true,
+    });
+  }
+
+  onClassClick(classTitle: string): void {
+    this.taskService.getTask(classTitle).subscribe((tasks) => {
+      if (tasks && tasks.length) {
+        this.tasks = tasks;
+        this.chunkedTasks = this.utilityService.chunkArray(this.tasks, 3);
+      } else {
+        this.tasks = [];
+        this.chunkedTasks = [];
+      }
     });
   }
 }

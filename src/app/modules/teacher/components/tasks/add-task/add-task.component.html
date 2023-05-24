@@ -5,7 +5,7 @@
 <div class="container col-lg-6 mb-5 mb-lg-0">
   <div class="card">
     <div class="card-body py-5 px-md-5">
-      <form>
+      <form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
         <div class="row">
           <div class="col-md-6 mb-4">
             <div class="form-outline">
@@ -15,6 +15,7 @@
                 id="fname"
                 class="form-control"
                 placeholder="Title of task"
+                formControlName="title"
               />
             </div>
           </div>
@@ -27,6 +28,7 @@
                 id="lname"
                 class="form-control"
                 placeholder="Name of lesson"
+                formControlName="subject"
               />
             </div>
           </div>
@@ -35,16 +37,7 @@
           <div class="col-md-6 mb-4">
             <div class="form-outline mb-4">
               <label class="form-label" for="select-class">Class</label>
-              <select
-                name=""
-                class="form-select form-control"
-                id="select-class"
-              >
-                <option selected>1.N/2.N/3.N</option>
-                <option value="class1">1.N</option>
-                <option value="class2">2.N</option>
-                <option value="class3">3.N</option>
-              </select>
+             <input type="text" class="form-control" formControlName="classTitle">
             </div>
           </div>
         </div>
@@ -58,6 +51,7 @@
                 id="description"
                 class="form-control"
                 placeholder="Description"
+                formControlName="description"
               />
             </div>
           </div>
@@ -66,12 +60,13 @@
         <div class="row">
           <div class="col-md-12 mb-4">
             <div class="form-outline mb-4">
-              <label class="form-label" for="password">Deadline</label>
+              <label class="form-label" for="deadline">Deadline</label>
               <input
                 type="date"
                 id="password"
                 class="form-control"
-                placeholder="Password"
+                placeholder="deadline"
+                formControlName="deadline"
               />
             </div>
           </div>

@@ -86,3 +86,8 @@ ul {
         @include button-focus;
     }
 }
+
+
+.list-item {
+    cursor: pointer;
+}

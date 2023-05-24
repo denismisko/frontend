@@ -9,13 +9,13 @@ import { StudentsService } from 'src/app/modules/shared/students/students.servic
   styleUrls: ['./student-add.component.scss'],
 })
 export class StudentAddComponent implements OnInit {
-
   studentForm!: FormGroup;
+  selectedValue!: string;
 
   constructor(
     private formBuilder: FormBuilder,
     private studentService: StudentsService,
-    private router: Router,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -31,8 +31,9 @@ export class StudentAddComponent implements OnInit {
     this.studentService
       .addStudent(this.studentForm.value)
       .subscribe((response) => {
-        console.log(response);
-        this.router.navigate(['/teacher/students'])
+        console.log(this.studentForm);
+        this.router.navigate(['/teacher/students']);
+        alert('Student was successfully added!');
       });
   }
 

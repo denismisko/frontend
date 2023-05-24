@@ -4,7 +4,7 @@
 
 <div class="classes">
   <ul class="text-center list-group">
-    <li class="list-item" *ngFor="let class of classes">
+    <li class="list-item" *ngFor="let class of classes" (click)="onClassClick(class.class)">
       {{ class.class }}
     </li>
   </ul>
@@ -15,8 +15,8 @@
 >
   <div class="row" *ngFor="let chunk of chunkedTasks">
     <div class="col-lg-3 col-md-4 col-sm-6 col-12" *ngFor="let task of chunk">
-      <h2 class="title">{{ task.title }}</h2>
-      <p class="lesson-and-class">{{ task.lesson }}</p>
+      <h2 class="title">{{ task.Title }}</h2>
+      <p class="lesson-and-class">{{ task.Subject }}</p>
       <a  (click)="openModal(task)"
         ><i class="bi bi-caret-down-square"></i
       ></a>

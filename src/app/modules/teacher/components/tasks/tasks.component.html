@@ -4,7 +4,7 @@
 
 <div class="classes" *ngIf="showHeaderAndClasses">
   <ul class="text-center list-group">
-    <li class="list-item" *ngFor="let class of classes">
+    <li class="list-item" *ngFor="let class of classes" (click)="onClassClick(class.class)">
       {{ class.class }}
     </li>
   </ul>
@@ -12,12 +12,12 @@
 
 <div
   class="container-fluid text-center d-flex flex-column gap-5 justify-content-center align-items-center"
-  [ngClass]="{ 'student-view': isStudentView }"
+  [ngClass]="{ 'student-view': isStudentView }" 
 >
   <div class="row" *ngFor="let chunk of chunkedTasks">
     <div class="col-lg-3 col-md-4 col-sm-6 col-12" *ngFor="let task of chunk">
-      <h2 class="title">{{ truncateDescription(task.title, 24) }}</h2>
-      <p class="lesson-and-class">{{ task.lesson }}</p>
+      <h2 class="title">{{ task.Title ? truncateDescription(task.Title, 24) : '' }}</h2>
+      <p class="lesson-and-class">{{ task.Subject }}</p>
       <a  (click)="openModal(task)"
         ><i class="bi bi-caret-down-square"></i
       ></a>
@@ -27,12 +27,12 @@
 
       <ng-template #content let-modal>
         <div class="modal-header text-center">
-          <h4 class="modal-title">{{ truncateDescription(selectedTask?.title, 40) }}</h4>
+          <h4 class="modal-title">{{ truncateDescription(selectedTask?.Title, 40) }}</h4>
         </div>
         <div class="modal-body">
-          {{ selectedTask?.description }}
+          {{ selectedTask?.Description }}
           <div class="deadline">
-            <p>Deadline: {{ selectedTask?.deadline }}</p>
+            <p>Deadline: {{ selectedTask?.Deadline }}</p>
           </div>
         </div>
         <div class="modal-footer">

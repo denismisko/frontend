@@ -15,7 +15,7 @@ export class StudentsComponent {
 
   students: Students[] = [];
 
-  @ViewChild('content') content!:ElementRef;
+  @ViewChild('content') content!: ElementRef;
 
   selectedStudent: any;
 
@@ -38,7 +38,7 @@ export class StudentsComponent {
     this.students = this.studentsService.getStudents();
   }
 
-  openModal(studentName:string) {
+  openModal(studentName: string) {
     this.selectedStudent = studentName;
     this.modalService.open(this.content, {
       centered: true,

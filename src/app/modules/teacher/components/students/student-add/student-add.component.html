@@ -52,14 +52,11 @@
           <div class="col-md-6 mb-4">
             <div class="form-outline mb-4">
               <label class="form-label" for="select-class">Class</label>
-              <input
-                type="text"
-                name="select-class"
-                class="form-control"
-                id="select-class"
-                placeholder="1.N/2.N/3.N"
-                formControlName="classTitle"
-              />
+              <select [(ngModel)]="selectedValue" class="form-select form-control" formControlName="classTitle">
+                <option *ngFor="let option of ['1.N', '2.N', '3.N']" [value]="option">
+                  {{option}}
+              </option>
+            </select>
             </div>
           </div>
         </div>

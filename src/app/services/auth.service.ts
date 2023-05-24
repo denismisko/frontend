@@ -7,9 +7,7 @@ import { HttpClient, HttpHeaderResponse } from '@angular/common/http';
 @Injectable({
   providedIn: 'root',
 })
-
-export class AuthService implements OnInit{
-
+export class AuthService implements OnInit {
   setToken(token: string): void {
     localStorage.setItem('token', token);
   }
@@ -24,10 +22,11 @@ export class AuthService implements OnInit{
 
   logout() {
     localStorage.removeItem('token');
-    this.router.navigate(['login'])
+    this.router
+      .navigate(['login'])
       .then(() => {
         // Navigation successful
-        console.log("Navigation successful to login page")
+        console.log('Navigation successful to login page');
       })
       .catch((err) => {
         console.error(err);
@@ -36,32 +35,33 @@ export class AuthService implements OnInit{
 
   private apiUrl = 'http://localhost:8080'; // Replace with your backend API URL
 
-  constructor(private http: HttpClient, private router: Router) { } // Injected Router
+  constructor(private http: HttpClient, private router: Router) {} // Injected Router
 
-  ngOnInit(): void {
-    
+  ngOnInit(): void {}
+
+  login(credentials: { username: string; password: string }): Observable<any> {
+    return this.http
+      .post<any>(`${this.apiUrl}/login`, credentials, { observe: 'response' })
+      .pipe(
+        tap((response) => {
+          const authHeader = response.headers.get('Authorization');
+          if (authHeader) {
+            const token = authHeader.split(' ')[1]; // Assuming 'Bearer <token>' format
+            this.setToken(token);
+          }
+        }),
+        map((response) => response.body), // map the full HttpResponse to its body
+        catchError((error) => {
+          if (error.status === 401) {
+            alert('Wrong username or password.');
+            throw new Error('Wrong username or password.');
+          } else {
+            alert('Failed to connect to the server.');
+            throw new Error('Failed to connect to the server.');
+          }
+        })
+      );
   }
 
-  login(credentials: { username: string, password: string }): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/login`, credentials, {observe: 'response'}).pipe(
-      tap(response => {
-        const authHeader = response.headers.get('Authorization');
-        if (authHeader) {
-          const token = authHeader.split(' ')[1]; // Assuming 'Bearer <token>' format
-          this.setToken(token);
-        }
-      }),
-      map(response => response.body), // map the full HttpResponse to its body
-      catchError(error => {
-        if (error.status === 401) {
-          alert('Wrong username or password.');
-          throw new Error('Wrong username or password.');
-        } else {
-          alert('Failed to connect to the server.');
-          throw new Error('Failed to connect to the server.');
-        }
-      })
-    );
-  }
 
 }

@@ -64,7 +64,6 @@ export class StudentsService implements OnInit {
       email: 'jakoo',
       classTitle: '1.N',
     },
-    
   ];
 
   ngOnInit(): void {}

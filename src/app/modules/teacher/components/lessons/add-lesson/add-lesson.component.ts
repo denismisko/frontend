@@ -11,6 +11,7 @@ import { LessonsService } from 'src/app/modules/shared/lessons/lessons.service';
 export class AddLessonComponent implements OnInit {
 
   subjectForm!: FormGroup;
+  selectedValue!: string;
 
   ngOnInit(): void {
     this.subjectForm = this.formBuilder.group({
@@ -30,7 +31,8 @@ export class AddLessonComponent implements OnInit {
     .subscribe((res) => {
       console.log(res);
       this.router.navigate(['/teacher/lessons'])
+      alert("Lesson was successfully added!")
     })
   }
-
+  
 }

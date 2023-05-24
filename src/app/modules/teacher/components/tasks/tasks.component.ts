@@ -13,6 +13,7 @@ import { Tasks } from 'src/app/modules/shared/tasks/task';
 import { TasksService } from 'src/app/modules/shared/tasks/tasks.service';
 import { UtilityService } from 'src/app/modules/shared/utility/utility.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-tasks',
@@ -23,6 +24,7 @@ export class TasksComponent {
   classes: Classes[] = [];
   tasks: Tasks[] = [];
   chunkedTasks: Tasks[][] = [];
+  classTitle!: string | null;
 
   selectedTask: any;
 
@@ -36,12 +38,17 @@ export class TasksComponent {
     private tasksService: TasksService,
     private utilityService: UtilityService,
     private modalService: NgbModal,
+    private router: Router,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
     this.classes = this.classesService.getClasses();
     this.tasks = this.tasksService.getTasks();
     this.chunkedTasks = this.utilityService.chunkArray(this.tasks, 3);
+    this.route.paramMap.subscribe((params) => {
+      this.classTitle = params.get('classTitle');
+    });
   }
 
   truncateDescription(description: string, maxLength: number): string {
@@ -53,7 +60,19 @@ export class TasksComponent {
   openModal(task: any) {
     this.selectedTask = task;
     this.modalService.open(this.content, {
-      centered: true
+      centered: true,
+    });
+  }
+
+  onClassClick(classTitle: string): void {
+    this.tasksService.getTask(classTitle).subscribe((tasks) => {
+      if (tasks && tasks.length) {
+        this.tasks = tasks;
+        this.chunkedTasks = this.utilityService.chunkArray(this.tasks, 3);
+      } else {
+        this.tasks = [];
+        this.chunkedTasks = [];
+      }
     });
   }
 }
