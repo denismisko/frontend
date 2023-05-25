@@ -6,17 +6,16 @@ import { LessonsService } from 'src/app/modules/shared/lessons/lessons.service';
 @Component({
   selector: 'app-add-lesson',
   templateUrl: './add-lesson.component.html',
-  styleUrls: ['./add-lesson.component.scss']
+  styleUrls: ['./add-lesson.component.scss'],
 })
 export class AddLessonComponent implements OnInit {
-
   subjectForm!: FormGroup;
   selectedValue!: string;
 
   ngOnInit(): void {
     this.subjectForm = this.formBuilder.group({
       title: [''],
-      classTitle: ['']
+      classTitle: [''],
     });
   }
 
@@ -24,15 +23,14 @@ export class AddLessonComponent implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router,
     private lessonService: LessonsService
-  ){}
+  ) {}
 
-  onSubmit(){
-    this.lessonService.addSubject(this.subjectForm.value)
-    .subscribe((res) => {
-      console.log(res);
-      this.router.navigate(['/teacher/lessons'])
-      alert("Lesson was successfully added!")
-    })
+  onSubmit() {
+    this.lessonService.addSubject(this.subjectForm.value).subscribe(() => {
+      this.router.navigate(['/teacher/lessons']).then(() => {
+        window.location.reload();
+      });
+      alert('Lesson was successfully added!');
+    });
   }
-  
 }

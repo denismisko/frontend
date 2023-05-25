@@ -1,6 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
-import { faL } from '@fortawesome/free-solid-svg-icons';
-import { Students } from 'src/app/modules/shared/students/students';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -8,7 +6,8 @@ import { AuthService } from 'src/app/services/auth.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit{
+
   showSideNavbar = false;
   showDropdownMenu = false;
   @Output() sideNavbarToggled = new EventEmitter<boolean>();
@@ -20,7 +19,9 @@ export class HeaderComponent {
 
   constructor(private authService: AuthService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
+
   logout(): void {
     this.authService.logout();
   }

@@ -25,7 +25,6 @@ export class AuthService implements OnInit {
     this.router
       .navigate(['login'])
       .then(() => {
-        // Navigation successful
         console.log('Navigation successful to login page');
       })
       .catch((err) => {
@@ -44,13 +43,24 @@ export class AuthService implements OnInit {
       .post<any>(`${this.apiUrl}/login`, credentials, { observe: 'response' })
       .pipe(
         tap((response) => {
+          console.log(response)
           const authHeader = response.headers.get('Authorization');
           if (authHeader) {
             const token = authHeader.split(' ')[1]; // Assuming 'Bearer <token>' format
             this.setToken(token);
           }
+
+          const authBody = response.body;
+            if (authBody && authBody.name && authBody.surname) {
+            const name = authBody.name;
+            const surname = authBody.surname;
+
+            localStorage.setItem("name", name);
+            localStorage.setItem("surname", surname);
+          }
+          
         }),
-        map((response) => response.body), // map the full HttpResponse to its body
+        map((response) => response.body), 
         catchError((error) => {
           if (error.status === 401) {
             alert('Wrong username or password.');

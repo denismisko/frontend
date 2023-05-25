@@ -23,17 +23,16 @@ export class AddTaskComponent implements OnInit {
       title: [''],
       description: [''],
       deadline: [''],
-      classTitle: ['']
+      classTitle: [''],
     });
   }
 
   onSubmit() {
-    this.taskService
-      .addTask(this.taskForm.value)
-      .subscribe((response) => {
-        console.log(response);
-        this.router.navigate(['/teacher/tasks']);
-        alert('Task was successfully added!');
+    this.taskService.addTask(this.taskForm.value).subscribe(() => {
+      this.router.navigate(['/teacher/tasks']).then(() => {
+        window.location.reload();
       });
+      alert('Task was successfully added!');
+    });
   }
 }

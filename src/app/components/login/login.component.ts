@@ -21,7 +21,8 @@ export class LoginComponent implements OnInit {
     studentService: StudentsService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
 
   onSubmit(): void {
     if (this.loginForm.valid) {

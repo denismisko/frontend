@@ -30,7 +30,7 @@ export class StudentAddComponent implements OnInit {
   onSubmit() {
     this.studentService
       .addStudent(this.studentForm.value)
-      .subscribe((response) => {
+      .subscribe(() => {
         this.router.navigate(['/teacher/students']).then(() => {
           window.location.reload();
         })
