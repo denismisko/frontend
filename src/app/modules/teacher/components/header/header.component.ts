@@ -8,6 +8,11 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class HeaderComponent implements OnInit{
 
+  user!: {
+    name: string;
+    surname: string;
+  } | null;
+
   showSideNavbar = false;
   showDropdownMenu = false;
   @Output() sideNavbarToggled = new EventEmitter<boolean>();
@@ -20,6 +25,18 @@ export class HeaderComponent implements OnInit{
   constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
+
+    const storedName = localStorage.getItem('name');
+    const storedSurname = localStorage.getItem('surname');
+
+    if (storedName && storedSurname) {
+      this.user = {
+        name: storedName,
+        surname: storedSurname,
+      };
+    } else {
+      this.user = null; 
+    }
   }
 
   logout(): void {

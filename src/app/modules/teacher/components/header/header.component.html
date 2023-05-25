@@ -1,6 +1,6 @@
 <div class="side-navbar" [ngClass]="{ open: showSideNavbar }">
   <div class="side-nav-header">
-    <h1>Denis Miškolci</h1>
+    <h1>{{ user?.name }} {{ user?.surname }}</h1>
   </div>
   <div class="side-nav-role">
     <h2>Teacher</h2>
@@ -51,7 +51,7 @@
               aria-expanded="false"
               (click)="showDropdownMenu = !showDropdownMenu"
             >
-             Denis Miškolci
+             {{ user?.name }} {{ user?.surname}}
             </a>
             <ul class="dropdown-menu" [class.show]="showDropdownMenu">
               <li>
