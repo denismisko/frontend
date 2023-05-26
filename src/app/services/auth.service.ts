@@ -24,9 +24,6 @@ export class AuthService implements OnInit {
     localStorage.removeItem('token');
     this.router
       .navigate(['login'])
-      .then(() => {
-        console.log('Navigation successful to login page');
-      })
       .catch((err) => {
         console.error(err);
       });
@@ -43,7 +40,6 @@ export class AuthService implements OnInit {
       .post<any>(`${this.apiUrl}/login`, credentials, { observe: 'response' })
       .pipe(
         tap((response) => {
-          console.log(response)
           const authHeader = response.headers.get('Authorization');
           if (authHeader) {
             const token = authHeader.split(' ')[1]; // Assuming 'Bearer <token>' format

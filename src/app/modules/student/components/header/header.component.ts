@@ -11,6 +11,12 @@ import { TasksComponent } from 'src/app/modules/teacher/components/tasks/tasks.c
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
+
+  user!: {
+    name: string;
+    surname: string;
+  } | null;
+
   showMenu = false;
 
   showSideNavbar = false;
@@ -31,6 +37,19 @@ export class HeaderComponent {
 
   ngOnInit(): void {
     this.tasks = this.tasksService.getTasks();
+
+    const storedName = localStorage.getItem('name');
+    const storedSurname = localStorage.getItem('surname');
+
+    if (storedName && storedSurname) {
+      this.user = {
+        name: storedName,
+        surname: storedSurname,
+      };
+    } else {
+      this.user = null;
+    }
+
   }
 
   logout(): void {

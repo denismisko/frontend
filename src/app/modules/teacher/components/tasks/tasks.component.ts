@@ -1,12 +1,9 @@
 import {
   Component,
   ElementRef,
-  EventEmitter,
   Input,
-  Output,
   ViewChild,
 } from '@angular/core';
-import { retry } from 'rxjs';
 import { Classes } from 'src/app/modules/shared/class.model';
 import { ClassesService } from 'src/app/modules/shared/classes.service';
 import { Tasks } from 'src/app/modules/shared/tasks/task';

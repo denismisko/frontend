@@ -32,7 +32,7 @@
             data-bs-toggle="dropdown"
             aria-expanded="false"
           >
-            Denis Miškolci
+            {{ user?.name }} {{ user?.surname }}
           </a>
           <ul class="dropdown-menu" [class.show]="showMenu">
             <li><a class="dropdown-item" (click)="logout()">Logout</a></li>

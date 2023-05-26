@@ -38,15 +38,15 @@ export class TasksService {
       );
   }
 
-  getAllTasks(): Observable<Tasks[]> {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('token')}`,
-      }),
-    };
-    return this.http.get<Tasks[]>(`${this.apiUrl}/tasks`, httpOptions);
-  }
+  // getAllTasks(): Observable<Tasks[]> {
+  //   const httpOptions = {
+  //     headers: new HttpHeaders({
+  //       'Content-Type': 'application/json',
+  //       Authorization: `Bearer ${localStorage.getItem('token')}`,
+  //     }),
+  //   };
+  //   return this.http.get<Tasks[]>(`${this.apiUrl}/tasks`, httpOptions);
+  // }
 
   private tasks: Tasks[] = [];
 

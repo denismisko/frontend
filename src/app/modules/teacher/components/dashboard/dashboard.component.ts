@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Students } from 'src/app/modules/shared/students/students';
-import { StudentsService } from 'src/app/modules/shared/students/students.service';
-import { Tasks } from 'src/app/modules/shared/tasks/task';
-import { TasksService } from 'src/app/modules/shared/tasks/tasks.service';
+import { TeacherDashboardService } from 'src/app/modules/shared/teacher-dashboard/teacher-dashboard.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,16 +7,18 @@ import { TasksService } from 'src/app/modules/shared/tasks/tasks.service';
   styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit {
+  dashboardInfo: any;
 
-  tasks: Tasks[] = [];
+  constructor(private dashboardService: TeacherDashboardService) {}
 
-  constructor(
-    private taskService: TasksService,
-    ) {}
-  
   ngOnInit() {
-       this.taskService.getAllTasks().subscribe((tasks) => {
-         this.tasks = tasks;
-       });
+    this.dashboardService.getDashoboardInformations().subscribe(
+      (response) => {
+        this.dashboardInfo = response;
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 }

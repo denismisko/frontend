@@ -18,7 +18,6 @@ import { StudentAddComponent } from './components/students/student-add/student-a
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
-
 @NgModule({
   declarations: [
     TeacherDashboardComponent,

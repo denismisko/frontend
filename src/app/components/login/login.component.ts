@@ -35,19 +35,12 @@ export class LoginComponent implements OnInit {
             if (result.role === 'teacher') {
               this.router
                 .navigate(['teacher'])
-                .then(() => {
-                  // Navigation successful
-                  console.log('Navigation successful to teacher page');
-                })
                 .catch((err) => {
                   console.error(err);
                 });
             } else if (result.role === 'student') {
               this.router
                 .navigate(['student'])
-                .then(() => {
-                  console.log('Navigation successful to student page');
-                })
                 .catch((err) => {
                   console.error(err);
                 });

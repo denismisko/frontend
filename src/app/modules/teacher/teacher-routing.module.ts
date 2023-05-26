@@ -21,10 +21,6 @@ const routes: Routes = [
       { path: 'lessons', component: LessonsComponent },
       { path: 'lessons/add-lesson', component: AddLessonComponent },
       { path: 'tasks', component: TasksComponent },
-      {
-        path: 'teacher/tasks/:classTitle',
-        component: TasksComponent,
-      },
       { path: 'tasks/add-task', component: AddTaskComponent },
       { path: 'students', component: StudentsComponent },
       { path: 'students/edit', component: StudentEditComponent },
