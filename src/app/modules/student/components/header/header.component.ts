@@ -36,20 +36,23 @@ export class HeaderComponent {
   ) {}
 
   ngOnInit(): void {
-    this.tasks = this.tasksService.getTasks();
+    this.getUsernameAndSurname();
+  }
 
-    const storedName = localStorage.getItem('name');
-    const storedSurname = localStorage.getItem('surname');
+  getUsernameAndSurname(){
+     this.tasks = this.tasksService.getTasks();
 
-    if (storedName && storedSurname) {
-      this.user = {
-        name: storedName,
-        surname: storedSurname,
-      };
-    } else {
-      this.user = null;
-    }
+     const storedName = localStorage.getItem('name');
+     const storedSurname = localStorage.getItem('surname');
 
+     if (storedName && storedSurname) {
+       this.user = {
+         name: storedName,
+         surname: storedSurname,
+       };
+     } else {
+       this.user = null;
+     }
   }
 
   logout(): void {

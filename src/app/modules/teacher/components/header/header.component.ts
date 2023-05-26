@@ -6,8 +6,7 @@ import { AuthService } from 'src/app/services/auth.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent implements OnInit{
-
+export class HeaderComponent implements OnInit {
   user!: {
     name: string;
     surname: string;
@@ -17,14 +16,22 @@ export class HeaderComponent implements OnInit{
   showDropdownMenu = false;
   @Output() sideNavbarToggled = new EventEmitter<boolean>();
 
+  constructor(private authService: AuthService) {}
+  
   toggleSideNavbar() {
     this.showSideNavbar = !this.showSideNavbar;
     this.sideNavbarToggled.emit(this.showSideNavbar);
   }
 
-  constructor(private authService: AuthService) {}
-
   ngOnInit(): void {
+    this.onGetUsernameAndSurname();
+  }
+
+  logout(): void {
+    this.authService.logout();
+  }
+
+  onGetUsernameAndSurname() {
     const storedName = localStorage.getItem('name');
     const storedSurname = localStorage.getItem('surname');
 
@@ -34,11 +41,7 @@ export class HeaderComponent implements OnInit{
         surname: storedSurname,
       };
     } else {
-      this.user = null; 
+      this.user = null;
     }
-  }
-
-  logout(): void {
-    this.authService.logout();
   }
 }

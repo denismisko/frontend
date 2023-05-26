@@ -12,18 +12,22 @@ export class AddLessonComponent implements OnInit {
   subjectForm!: FormGroup;
   selectedValue!: string;
 
-  ngOnInit(): void {
-    this.subjectForm = this.formBuilder.group({
-      title: [''],
-      classTitle: [''],
-    });
-  }
-
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
     private lessonService: LessonsService
   ) {}
+
+  ngOnInit(): void {
+    this.onSubjectForm();
+  }
+
+  onSubjectForm() {
+    this.subjectForm = this.formBuilder.group({
+      title: [''],
+      classTitle: [''],
+    });
+  }
 
   onSubmit() {
     this.lessonService.addSubject(this.subjectForm.value).subscribe(() => {

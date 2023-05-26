@@ -4,5 +4,4 @@ export interface Students {
   name: string;
   surname: string;
   classTitle:string;
-  email:string;
 }

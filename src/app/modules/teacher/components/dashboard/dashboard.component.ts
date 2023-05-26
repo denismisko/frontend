@@ -12,13 +12,17 @@ export class DashboardComponent implements OnInit {
   constructor(private dashboardService: TeacherDashboardService) {}
 
   ngOnInit() {
-    this.dashboardService.getDashoboardInformations().subscribe(
-      (response) => {
-        this.dashboardInfo = response;
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+    this.onGetDashboardInfo();
+  }
+
+  onGetDashboardInfo() {
+     this.dashboardService.getDashoboardInformations().subscribe(
+       (response) => {
+         this.dashboardInfo = response;
+       },
+       (error) => {
+         console.log(error);
+       }
+     );
   }
 }

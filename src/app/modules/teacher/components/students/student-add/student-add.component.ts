@@ -19,6 +19,10 @@ export class StudentAddComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.onStudentForm();
+  }
+
+  onStudentForm() {
     this.studentForm = this.formBuilder.group({
       username: [''],
       name: [''],
@@ -28,14 +32,11 @@ export class StudentAddComponent implements OnInit {
   }
 
   onSubmit() {
-    this.studentService
-      .addStudent(this.studentForm.value)
-      .subscribe(() => {
-        this.router.navigate(['/teacher/students']).then(() => {
-          window.location.reload();
-        })
-        alert('Student was successfully added!');
+    this.studentService.addStudent(this.studentForm.value).subscribe(() => {
+      this.router.navigate(['/teacher/students']).then(() => {
+        window.location.reload();
       });
+      alert('Student was successfully added!');
+    });
   }
-
 }

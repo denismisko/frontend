@@ -18,6 +18,10 @@ export class AddTaskComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.onTaskForm();
+  }
+
+  onTaskForm() {
     this.taskForm = this.formBuilder.group({
       subject: [''],
       title: [''],

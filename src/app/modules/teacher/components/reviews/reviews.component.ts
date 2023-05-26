@@ -25,14 +25,6 @@ export class ReviewsComponent {
 
   @ViewChild('content') content!: ElementRef;
 
-  selectedStudentName: string = '';
-  selectedStudentEmail: string = '';
-
-  onSelectedStudent(student: Students): void {
-    this.selectedStudentName = student.name;
-    this.selectedStudentEmail = student.email;
-  }
-
   constructor(
     private classService: ClassesService,
     private utilityService: UtilityService,
