@@ -26,6 +26,7 @@ export class TasksComponent {
   selectedTask: any;
 
   @ViewChild('content') content!: ElementRef;
+  @ViewChild('content_delete') contentDelete!: ElementRef;
 
   @Input() showHeaderAndClasses: boolean = true;
   @Input() isStudentView: boolean = false;
@@ -36,7 +37,6 @@ export class TasksComponent {
     private utilityService: UtilityService,
     private modalService: NgbModal,
     private router: Router,
-    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
@@ -58,6 +58,13 @@ export class TasksComponent {
     });
   }
 
+  openModalDelete(task: any) {
+    this.selectedTask = task;
+    this.modalService.open(this.contentDelete, {
+      centered: true,
+    });
+  }
+
   onClassClick(classTitle: string): void {
     this.tasksService.getTask(classTitle).subscribe((tasks) => {
       if (tasks && tasks.length) {
@@ -68,5 +75,17 @@ export class TasksComponent {
         this.chunkedTasks = [];
       }
     });
+  }
+
+  onDeleteTask(task: any): void {
+    this.selectedTask = task;
+    this.tasksService.deleteTask(this.selectedTask.ID).subscribe(() => {
+      this.router.navigate(['/teacher/tasks']).then(() => {
+        window.location.reload();
+      });
+      alert('Task deleted successfully!');
+      this.tasks = this.tasks.filter((t) => t.ID !== this.selectedTask.ID);
+      this.chunkedTasks = this.utilityService.chunkArray(this.tasks, 3);
+    })
   }
 }

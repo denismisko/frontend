@@ -10,7 +10,12 @@ import { StudentsService } from 'src/app/modules/shared/students/students.servic
 })
 export class StudentEditComponent implements OnInit {
 
+  
+  constructor(
+    private studentsService: StudentsService,
+  ){}
+
   ngOnInit(): void {
-    
   }
+
 }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, tap } from 'rxjs';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -12,7 +12,7 @@ export class TeacherDashboardService {
     private http: HttpClient
   ) {}
 
-  getDashoboardInformations(): Observable<any> {
+  getDashboardInformations(): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',

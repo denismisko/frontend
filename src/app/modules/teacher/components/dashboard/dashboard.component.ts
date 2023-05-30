@@ -16,13 +16,10 @@ export class DashboardComponent implements OnInit {
   }
 
   onGetDashboardInfo() {
-     this.dashboardService.getDashoboardInformations().subscribe(
+     this.dashboardService.getDashboardInformations().subscribe(
        (response) => {
          this.dashboardInfo = response;
        },
-       (error) => {
-         console.log(error);
-       }
      );
   }
 }

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Tasks } from './task';
 import { Observable, map } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { TasksComponent } from '../../teacher/components/tasks/tasks.component';
 
 @Injectable({
   providedIn: 'root',
@@ -38,15 +39,16 @@ export class TasksService {
       );
   }
 
-  // getAllTasks(): Observable<Tasks[]> {
-  //   const httpOptions = {
-  //     headers: new HttpHeaders({
-  //       'Content-Type': 'application/json',
-  //       Authorization: `Bearer ${localStorage.getItem('token')}`,
-  //     }),
-  //   };
-  //   return this.http.get<Tasks[]>(`${this.apiUrl}/tasks`, httpOptions);
-  // }
+  deleteTask(taskID:string) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+      }),
+      body: { ID: taskID }, 
+    };
+    return this.http.delete(`${this.apiUrl}/task`, httpOptions);
+  }
 
   private tasks: Tasks[] = [];
 

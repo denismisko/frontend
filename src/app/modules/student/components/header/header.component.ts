@@ -37,11 +37,10 @@ export class HeaderComponent {
 
   ngOnInit(): void {
     this.getUsernameAndSurname();
+    this.tasks = this.tasksService.getTasks();
   }
 
   getUsernameAndSurname(){
-     this.tasks = this.tasksService.getTasks();
-
      const storedName = localStorage.getItem('name');
      const storedSurname = localStorage.getItem('surname');
 

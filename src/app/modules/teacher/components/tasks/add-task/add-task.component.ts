@@ -10,7 +10,8 @@ import { TasksService } from 'src/app/modules/shared/tasks/tasks.service';
 })
 export class AddTaskComponent implements OnInit {
   taskForm!: FormGroup;
-
+  selectedValue!: string;
+  
   constructor(
     private taskService: TasksService,
     private router: Router,
@@ -27,7 +28,7 @@ export class AddTaskComponent implements OnInit {
       title: [''],
       description: [''],
       deadline: [''],
-      classTitle: [''],
+      class: [''],
     });
   }
 

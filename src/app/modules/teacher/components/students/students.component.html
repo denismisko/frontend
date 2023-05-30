@@ -51,7 +51,7 @@
           <h4 class="modal-title">Delete</h4>
         </div>
         <div class="modal-body">
-          Are you sure you want to delete {{ selectedStudentName }} {{ selectedStudentSurname }}?
+          Are you sure you want to delete {{ selectedStudentUsername }}?
         </div>
         <div class="modal-footer">
           <button
@@ -64,7 +64,7 @@
           <button
             type="button"
             class="btn"
-            (click)="modal.close('Close click')"
+            (click)="onDeleteStudent(selectedStudentUsername)"
           >
             Delete
           </button>

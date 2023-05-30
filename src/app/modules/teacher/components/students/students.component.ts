@@ -4,6 +4,7 @@ import { ClassesService } from 'src/app/modules/shared/classes.service';
 import { Students } from 'src/app/modules/shared/students/students';
 import { StudentsService } from 'src/app/modules/shared/students/students.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import {  Router } from '@angular/router';
 
 @Component({
   selector: 'app-students',
@@ -23,7 +24,8 @@ export class StudentsComponent {
   constructor(
     private studentsService: StudentsService,
     private classesService: ClassesService,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private router: Router
   ) {}
 
   selectedStudentName: string = '';
@@ -56,6 +58,16 @@ export class StudentsComponent {
       } else {
         this.students = [];
       }
+    });
+  }
+
+  onDeleteStudent(student: any): void {
+    this.studentsService.deleteStudent(student).subscribe(() => {
+      this.router.navigate(['/teacher/students']).then(() => {
+        window.location.reload();
+      });
+      alert('Student deleted successfully!');
+      this.students = this.students.filter((s) => s.username !== student.username);
     });
   }
 }

@@ -38,6 +38,17 @@ export class StudentsService implements OnInit {
       );
   }
 
+  deleteStudent(username:string): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+      }),
+      body: {username: username},
+    };
+    return this.http.delete(`${this.apiUrl}/student`, httpOptions);
+   }
+
   students: Students[] = [];
 
   ngOnInit(): void {}

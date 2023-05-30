@@ -5,8 +5,6 @@ import { Tasks } from 'src/app/modules/shared/tasks/task';
 import { TasksService } from 'src/app/modules/shared/tasks/tasks.service';
 import { UtilityService } from 'src/app/modules/shared/utility/utility.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { StudentsService } from 'src/app/modules/shared/students/students.service';
-import { Students } from 'src/app/modules/shared/students/students';
 
 @Component({
   selector: 'app-reviews',
@@ -16,7 +14,6 @@ import { Students } from 'src/app/modules/shared/students/students';
 export class ReviewsComponent {
   classes: Classes[] = [];
   tasks: Tasks[] = [];
-  students: Students[] = [];
 
   chunkedTasks: Tasks[][] = []; // utilityService - dokaze udrziavat hodnotu comlumns v jednom riadku, napr 3 etc.
 
@@ -30,7 +27,6 @@ export class ReviewsComponent {
     private utilityService: UtilityService,
     private taskService: TasksService,
     private modalService: NgbModal,
-    private studentService: StudentsService
   ) {}
 
   ngOnInit() {
