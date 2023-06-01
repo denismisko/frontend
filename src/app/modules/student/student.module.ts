@@ -8,6 +8,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { TeacherModule } from '../teacher/teacher.module';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { TeacherModule } from '../teacher/teacher.module';
     CommonModule,
     StudentRoutingModule,
     FontAwesomeModule,
-    TeacherModule
+    TeacherModule,
+    DragDropModule
   ]
 })
 export class StudentModule { }

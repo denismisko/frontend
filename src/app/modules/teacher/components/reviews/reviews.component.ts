@@ -5,6 +5,8 @@ import { Tasks } from 'src/app/modules/shared/tasks/task';
 import { TasksService } from 'src/app/modules/shared/tasks/tasks.service';
 import { UtilityService } from 'src/app/modules/shared/utility/utility.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ReviewsService } from 'src/app/modules/shared/reviews/reviews.service';
+import { Reviews } from 'src/app/modules/shared/reviews/reviews';
 
 @Component({
   selector: 'app-reviews',
@@ -14,10 +16,11 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 export class ReviewsComponent {
   classes: Classes[] = [];
   tasks: Tasks[] = [];
+  reviews: Reviews[] = [];
 
-  chunkedTasks: Tasks[][] = []; // utilityService - dokaze udrziavat hodnotu comlumns v jednom riadku, napr 3 etc.
+  chunkedReviews: Reviews[][] = []; // utilityService - dokaze udrziavat hodnotu comlumns v jednom riadku, napr 3 etc.
 
-  selectedTask: any;
+  selectedReview: any;
   classTitle!: string | null;
 
   @ViewChild('content') content!: ElementRef;
@@ -27,29 +30,36 @@ export class ReviewsComponent {
     private utilityService: UtilityService,
     private taskService: TasksService,
     private modalService: NgbModal,
+    private reviewService: ReviewsService
   ) {}
 
   ngOnInit() {
     this.classes = this.classService.getClasses();
-    this.tasks = this.taskService.getTasks();
-    this.chunkedTasks = this.utilityService.chunkArray(this.tasks, 3);
+    this.reviews = this.reviewService.getReviews();
+    this.chunkedReviews = this.utilityService.chunkArray(this.reviews, 3);
   }
 
   openModal(task: any) {
-    this.selectedTask = task;
+    this.selectedReview = task;
     this.modalService.open(this.content, {
       centered: true,
     });
   }
 
+  truncateDescription(description: string, maxLength: number): string {
+    return description.length > maxLength
+      ? description.slice(0, maxLength) + '...'
+      : description;
+  }
+
   onClassClick(classTitle: string): void {
-    this.taskService.getTask(classTitle).subscribe((tasks) => {
-      if (tasks && tasks.length) {
-        this.tasks = tasks;
-        this.chunkedTasks = this.utilityService.chunkArray(this.tasks, 3);
+    this.reviewService.getReview(classTitle).subscribe((reviews) => {
+      if (reviews && reviews.length) {
+        this.reviews = reviews;
+        this.chunkedReviews = this.utilityService.chunkArray(this.reviews, 3);
       } else {
         this.tasks = [];
-        this.chunkedTasks = [];
+        this.chunkedReviews = [];
       }
     });
   }

@@ -13,19 +13,24 @@
 <div
   class="container-fluid text-center d-flex flex-column gap-5 justify-content-center align-items-center"
 >
-  <div class="row" *ngFor="let chunk of chunkedTasks">
-    <div class="col-lg-3 col-md-4 col-sm-6 col-12" *ngFor="let task of chunk">
-      <h2 class="title">{{ task.Title }}</h2>
-      <p class="lesson-and-class">{{ task.Subject }}</p>
-      <a  (click)="openModal(task)"
+  <div class="row" *ngFor="let chunk of chunkedReviews">
+    <div class="col-lg-3 col-md-4 col-sm-6 col-12" *ngFor="let review of chunk">
+      <h2 class="title">{{ review.taskName }}</h2>
+      <p class="lesson-and-class">{{ review.subject }}</p>
+      <a  (click)="openModal(review)"
         ><i class="bi bi-caret-down-square"></i
       ></a>
-  <ng-template #content let-modal>
+
+      <ng-template #content let-modal>
         <div class="modal-header text-center">
-          <h4 class="modal-title">Git</h4>
+          <h4 class="modal-title">{{ truncateDescription(selectedReview?.taskName, 40) }}</h4>
         </div>
         <div class="modal-body">
-          <a href="https://gitlab.kosickaakademia.sk/" target="_blank">https://gitlab.kosickaakademia.sk/</a>
+          {{ selectedReview?.description }}
+          <div class="deadline">
+            <p>Deadline: {{ selectedReview?.deadline }}</p>
+            <a href="{{' review.link '}}" target="_blank">{{ review.link }}</a>
+          </div>
         </div>
         <div class="modal-footer">
           <button
@@ -38,7 +43,7 @@
         </div>
       </ng-template>
       <div class="name-of-student">
-        <p>Denis Miškolci</p>
+        <p>{{review.name}} {{ review.surname }}</p>
       </div>
     </div>
   </div>

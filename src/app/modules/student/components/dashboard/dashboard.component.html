@@ -8,11 +8,16 @@
 
 <div class="container text-center">
   <div class="row">
-    <div class="col">
+    <div class="col"
+      cdkDropList
+      #todoList="cdkDropList"
+      [cdkDropListData]="cardsToDo"
+      [cdkDropListConnectedTo]="[inProgressList, reviewList, doneList]"
+      (cdkDropListDropped)="drop($event)">
       TO-DO
-      <span class="number-of-tasks">4</span>
+      <span class="number-of-tasks">{{ cardsToDo.length }}</span>
       <div class="content">
-        <div *ngFor="let card of cardsToDo">
+        <div *ngFor="let card of cardsToDo" cdkDrag>
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">{{ card.title }}</h5>
@@ -22,11 +27,16 @@
         </div>
       </div>
     </div>
-    <div class="col">
+    <div class="col"
+      cdkDropList
+      #inProgressList="cdkDropList"
+      [cdkDropListData]="cardsInProgress"
+      [cdkDropListConnectedTo]="[todoList, reviewList, doneList]"
+      (cdkDropListDropped)="drop($event)">
       IN PROGRESS
-      <span class="number-of-tasks">4</span>
+      <span class="number-of-tasks">{{ cardsInProgress.length }}</span>
       <div class="content">
-        <div *ngFor="let card of cardsInProgress">
+        <div *ngFor="let card of cardsInProgress" cdkDrag>
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">{{ card.title }}</h5>
@@ -36,11 +46,16 @@
         </div>
       </div>
     </div>
-    <div class="col">
+    <div class="col"
+      cdkDropList
+      #reviewList="cdkDropList"
+      [cdkDropListData]="cardsReview"
+      [cdkDropListConnectedTo]="[todoList, inProgressList, doneList]"
+      (cdkDropListDropped)="drop($event)">
       REVIEWS
-      <span class="number-of-tasks">4</span>
+      <span class="number-of-tasks">{{ cardsReview.length }}</span>
       <div class="content">
-        <div *ngFor="let card of cardsReview">
+        <div *ngFor="let card of cardsReview" cdkDrag>
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">{{ card.title }}</h5>
@@ -50,11 +65,15 @@
         </div>
       </div>
     </div>
-    <div class="col">
+    <div class="col"
+      cdkDropList
+      #doneList="cdkDropList"
+      [cdkDropListData]="cardsDone"
+      (cdkDropListDropped)="drop($event)">
       DONE
-      <span class="number-of-tasks">4</span>
+      <span class="number-of-tasks">{{ cardsDone.length }}</span>
       <div class="content">
-        <div *ngFor="let card of cardsDone">
+        <div *ngFor="let card of cardsDone" cdkDrag>
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">{{ card.title }}</h5>
@@ -66,3 +85,4 @@
     </div>
   </div>
 </div>
+
