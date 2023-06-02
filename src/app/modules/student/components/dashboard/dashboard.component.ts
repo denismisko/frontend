@@ -62,6 +62,6 @@ export class DashboardComponent {
   calculateHeight(cards: Card[]): number {
     const baseHeight = 220; // Minimum column height
     const itemHeight = 165; // Height per task
-    return baseHeight + cards.length * itemHeight;
+    return baseHeight + cards.length * itemHeight - 100 ;
   }
 }
