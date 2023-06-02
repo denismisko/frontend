@@ -101,10 +101,21 @@ ul {
 
     @include button;
 
+
     &:focus {
         @include button-focus;
     }
 }
+
+.modal-footer button { 
+     width: 70px !important;   
+}
+
+.close {
+    background-color: transparent !important;
+    color: #000 !important;
+}
+
 
 
 .list-item {

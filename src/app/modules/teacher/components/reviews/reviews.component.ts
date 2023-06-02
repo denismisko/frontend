@@ -1,12 +1,11 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Classes } from 'src/app/modules/shared/class.model';
 import { ClassesService } from 'src/app/modules/shared/classes.service';
-import { Tasks } from 'src/app/modules/shared/tasks/task';
-import { TasksService } from 'src/app/modules/shared/tasks/tasks.service';
 import { UtilityService } from 'src/app/modules/shared/utility/utility.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ReviewsService } from 'src/app/modules/shared/reviews/reviews.service';
 import { Reviews } from 'src/app/modules/shared/reviews/reviews';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-reviews',
@@ -15,7 +14,6 @@ import { Reviews } from 'src/app/modules/shared/reviews/reviews';
 })
 export class ReviewsComponent {
   classes: Classes[] = [];
-  tasks: Tasks[] = [];
   reviews: Reviews[] = [];
 
   chunkedReviews: Reviews[][] = []; // utilityService - dokaze udrziavat hodnotu comlumns v jednom riadku, napr 3 etc.
@@ -28,15 +26,17 @@ export class ReviewsComponent {
   constructor(
     private classService: ClassesService,
     private utilityService: UtilityService,
-    private taskService: TasksService,
     private modalService: NgbModal,
-    private reviewService: ReviewsService
+    private reviewService: ReviewsService,
+    private router: Router,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit() {
     this.classes = this.classService.getClasses();
     this.reviews = this.reviewService.getReviews();
     this.chunkedReviews = this.utilityService.chunkArray(this.reviews, 3);
+    this.onClassClick("1.N");
   }
 
   openModal(task: any) {
@@ -58,9 +58,10 @@ export class ReviewsComponent {
         this.reviews = reviews;
         this.chunkedReviews = this.utilityService.chunkArray(this.reviews, 3);
       } else {
-        this.tasks = [];
+        this.reviews = [];
         this.chunkedReviews = [];
       }
+      this.router.navigate(['/teacher/reviews']);
     });
   }
 }

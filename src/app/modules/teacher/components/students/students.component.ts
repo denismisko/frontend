@@ -5,6 +5,7 @@ import { Students } from 'src/app/modules/shared/students/students';
 import { StudentsService } from 'src/app/modules/shared/students/students.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import {  Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-students',
@@ -25,7 +26,8 @@ export class StudentsComponent {
     private studentsService: StudentsService,
     private classesService: ClassesService,
     private modalService: NgbModal,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) {}
 
   selectedStudentName: string = '';
@@ -41,6 +43,7 @@ export class StudentsComponent {
   ngOnInit(): void {
     this.classes = this.classesService.getClasses();
     this.students = this.studentsService.getStudents();
+    this.onClassClick("1.N")
   }
 
   openModal(studentName: string) {
@@ -58,6 +61,7 @@ export class StudentsComponent {
       } else {
         this.students = [];
       }
+      this.router.navigate(['/teacher/students']);
     });
   }
 

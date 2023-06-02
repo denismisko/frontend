@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Card, Subjects } from '../../student.model';
+import { Card, Subjects } from '../../students';
 import {
   CdkDrag,
   CdkDragDrop,
@@ -27,43 +27,19 @@ export class DashboardComponent {
   ];
 
   cardsToDo: Card[] = [
-    { image: 'image-url-1', title: 'TO-DO', description: 'Description 1' },
-    { image: 'image-url-2', title: 'TO-DO', description: 'Description 2' },
-    { image: 'image-url-3', title: 'TO-DO', description: 'Description 3' },
-    { image: 'image-url-3', title: 'TO-DO', description: 'Description 3' },
+    { id: '1', title: 'Learn Angular', description: 'ahoj', status: '3' },
   ];
 
   cardsInProgress: Card[] = [
-    {
-      image: 'image-url-1',
-      title: 'IN PROGRESS',
-      description: 'Description 1',
-    },
-    {
-      image: 'image-url-2',
-      title: 'IN PROGRESS',
-      description: 'Description 2',
-    },
-    {
-      image: 'image-url-3',
-      title: 'IN PROGRESS',
-      description: 'Description 3',
-    },
-    { image: 'image-url-3', title: 'TO-DO', description: 'Description 3' },
+    { id: '1', title: 'Learn Angular', description: 'ahoj', status: '3' },
   ];
 
   cardsReview: Card[] = [
-    { image: 'image-url-1', title: 'REVIEW', description: 'Description 1' },
-    { image: 'image-url-2', title: 'REVIEW', description: 'Description 2' },
-    { image: 'image-url-3', title: 'REVIEW', description: 'Description 3' },
-    { image: 'image-url-3', title: 'TO-DO', description: 'Description 3' },
+    { id: '1', title: 'Learn Angular', description: 'ahoj', status: '3' },
   ];
 
   cardsDone: Card[] = [
-    { image: 'image-url-1', title: 'DONE', description: 'Description 1' },
-    { image: 'image-url-2', title: 'DONE', description: 'Description 2' },
-    { image: 'image-url-3', title: 'DONE', description: 'Description 3' },
-    { image: 'image-url-3', title: 'TO-DO', description: 'Description 3' },
+    { id: '1', title: 'Learn Angular', description: 'ahoj', status: '3' },
   ];
 
   drop(event: CdkDragDrop<Card[]>) {
@@ -81,5 +57,11 @@ export class DashboardComponent {
         event.currentIndex
       );
     }
+  }
+
+  calculateHeight(cards: Card[]): number {
+    const baseHeight = 220; // Minimum column height
+    const itemHeight = 165; // Height per task
+    return baseHeight + cards.length * itemHeight;
   }
 }

@@ -1,17 +1,23 @@
-.container {
+.container-fluid {
     margin-top: 100px;
     position: absolute;
+    top: 50%;
+}
+
+.row {
+  display: flex;
+  /* Add this to make the columns take up the full height */
+  align-items: stretch;
 }
 
 .col {
     position: relative;
-    left: 210px;
     max-width:100%;
     background-color: #323232; 
     color: white;
     text-align: left;
     padding: 25px;
-    margin-right: 20px;
+    margin: 0 15px;
     max-height: 640px;
     overflow-y: auto;
     
@@ -28,6 +34,7 @@
         border-radius: 0;
     }
 }
+
 
 
 ul {

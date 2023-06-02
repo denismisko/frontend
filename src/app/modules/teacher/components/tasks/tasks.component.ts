@@ -2,6 +2,7 @@ import {
   Component,
   ElementRef,
   Input,
+  OnInit,
   ViewChild,
 } from '@angular/core';
 import { Classes } from 'src/app/modules/shared/class.model';
@@ -17,7 +18,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   templateUrl: './tasks.component.html',
   styleUrls: ['./tasks.component.scss'],
 })
-export class TasksComponent {
+export class TasksComponent implements OnInit {
   classes: Classes[] = [];
   tasks: Tasks[] = [];
   chunkedTasks: Tasks[][] = [];
@@ -37,12 +38,14 @@ export class TasksComponent {
     private utilityService: UtilityService,
     private modalService: NgbModal,
     private router: Router,
+    private route: ActivatedRoute,
   ) {}
 
   ngOnInit(): void {
     this.classes = this.classesService.getClasses();
     this.tasks = this.tasksService.getTasks();
     this.chunkedTasks = this.utilityService.chunkArray(this.tasks, 3);
+    this.onClassClick("1.N");
   }
 
   truncateDescription(description: string, maxLength: number): string {
@@ -74,6 +77,7 @@ export class TasksComponent {
         this.tasks = [];
         this.chunkedTasks = [];
       }
+       this.router.navigate(['/teacher/tasks']);
     });
   }
 
