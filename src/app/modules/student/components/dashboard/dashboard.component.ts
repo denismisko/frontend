@@ -16,17 +16,17 @@ import { StudentDashboardService } from 'src/app/modules/shared/student-dashboar
 })
 export class DashboardComponent implements OnInit {
   dashboardInfo: any;
+  private selectedSubjectTitle: string | null = null;
 
   previousContainer?: CdkDropList<Card[]>;
   previousIndex: number = -1;
 
   selectedCard!: any;
-  taskToMove: any; 
+  taskToMove: any;
   taskOriginalStatus: any;
 
   statusMapping: { [key: string]: string } = {
-    backlog: '0',
-    todo: '1', 
+    todo: '1',
     inProgress: '2',
     review: '3',
     done: '4',
@@ -37,7 +37,7 @@ export class DashboardComponent implements OnInit {
 
   constructor(
     private modalService: NgbModal,
-    private dashboardService: StudentDashboardService,
+    private dashboardService: StudentDashboardService
   ) {}
 
   ngOnInit(): void {
@@ -123,19 +123,9 @@ export class DashboardComponent implements OnInit {
   updateTaskStatus(taskId: string, status: string) {
     this.dashboardService.updateTaskStatus(taskId, status).subscribe(
       (response) => {
-        // Refresh the dashboard info after updating the task's status
-        this.dashboardService.getDashboardInformations().subscribe(
-          (newDashboardInfo) => {
-             console.log(
-               'Dashboard info fetched successfully:',
-               newDashboardInfo
-             );
-            this.dashboardInfo = newDashboardInfo;
-          },
-          (error) => {
-            console.error('Error fetching dashboard info:', error);
-          }
-        );
+        if (this.selectedSubjectTitle) {
+          this.fetchTasksForSubject(this.selectedSubjectTitle);
+      }
       },
       (error) => {
         console.error('Error updating task status:', error);
@@ -155,5 +145,29 @@ export class DashboardComponent implements OnInit {
     const itemHeight = 165; // Height per task
     const length = dashboardInfo ? dashboardInfo.length : 0;
     return baseHeight + length * itemHeight - 100;
+  }
+
+  onSubjectClick(subjectTitle: string) {
+    this.selectedSubjectTitle = subjectTitle;
+    this.fetchTasksForSubject(subjectTitle);
+  }
+
+  fetchTasksForSubject(subjectTitle: string) {
+    this.dashboardService
+      .getDashboardInformationsBySubject(subjectTitle)
+      .subscribe(
+        (tasks) => {
+          this.dashboardInfo = {
+            ...this.dashboardInfo,
+            todo: tasks.todo || [],
+            inProgress: tasks.inProgress || [],
+            review: tasks.review || [],
+            done: tasks.done || [],
+          };
+        },
+        (error) => {
+          console.log('Error while fetching tasks: ', error);
+        }
+      );
   }
 }
