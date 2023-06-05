@@ -5,6 +5,9 @@ import { TasksService } from 'src/app/modules/shared/tasks/tasks.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { TasksComponent } from 'src/app/modules/teacher/components/tasks/tasks.component';
+import { Classes } from 'src/app/modules/shared/class.model';
+import { Students } from 'src/app/modules/shared/students/students';
+import { StudentsService } from 'src/app/modules/shared/students/students.service';
 
 @Component({
   selector: 'app-header',
@@ -30,14 +33,17 @@ export class HeaderComponent {
   }
 
   tasks: Tasks[] = [];
+  students: Students[] = [];
 
   constructor(
     private tasksService: TasksService,
     private authService: AuthService,
+    private studentService: StudentsService,
   ) {}
 
   ngOnInit(): void {
     this.getUsernameAndSurname();
+    this.studentService.getStudents();
     this.tasks = this.tasksService.getTasks();
   }
 
