@@ -5,6 +5,7 @@ import { TasksService } from 'src/app/modules/shared/tasks/tasks.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { TasksComponent } from 'src/app/modules/teacher/components/tasks/tasks.component';
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -57,11 +58,4 @@ export class HeaderComponent {
   logout(): void {
     this.authService.logout();
   }
-
-  truncateDescription(description: string, maxLength: number): string {
-    return description.length > maxLength
-      ? description.slice(0, maxLength) + '...'
-      : description;
-  }
-
 }

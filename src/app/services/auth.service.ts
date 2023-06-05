@@ -2,7 +2,7 @@
 import { Injectable, OnInit } from '@angular/core';
 import { Observable, map, of, tap, throwError, catchError } from 'rxjs';
 import { Router } from '@angular/router';
-import { HttpClient, HttpHeaderResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaderResponse, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
@@ -22,6 +22,8 @@ export class AuthService implements OnInit {
 
   logout() {
     localStorage.removeItem('token');
+    localStorage.removeItem('name');
+    localStorage.removeItem('surname');
     this.router
       .navigate(['login'])
       .catch((err) => {
@@ -68,4 +70,5 @@ export class AuthService implements OnInit {
         })
       );
   }
+
 }

@@ -1,88 +1,126 @@
 <div class="subjects subjects-container">
   <ul class="text-center list-group">
-    <li class="list-item" *ngFor="let subject of subjects">
-      {{ subject.subject }}
+    <li class="list-item" *ngFor="let subject of dashboardInfo?.subjects" >
+      {{ subject }}
     </li>
   </ul>
 </div>
 
 <div class="container-fluid text-center">
   <div class="row">
-    <div class="col"
+    <div
+      class="col"
       cdkDropList
       #todoList="cdkDropList"
       [cdkDropListData]="cardsToDo"
-      [cdkDropListConnectedTo]="[inProgressList, reviewList, doneList]"
+      [cdkDropListConnectedTo]="[inProgressList]"
       (cdkDropListDropped)="drop($event)"
       [style.height.px]="calculateHeight(cardsToDo)"
-      >
+    >
       TO-DO
       <span class="number-of-tasks">{{ cardsToDo.length }}</span>
       <div class="content">
-        <div *ngFor="let card of cardsToDo" cdkDrag>
+        <div *ngFor="let task of cardsToDo" cdkDrag>
           <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">{{ card.title }}</h5>
-              <p class="card-text">{{ card.description }}</p>
+            <div class="card-body" *ngFor="let backlog of dashboardInfo?.backlog">
+              {{ backlog.title }}
+              {{ backlog.description }}
+              {{ backlog.deadline }}
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="col"
+    <div
+      class="col"
       cdkDropList
       #inProgressList="cdkDropList"
       [cdkDropListData]="cardsInProgress"
-      [cdkDropListConnectedTo]="[todoList, reviewList, doneList]"
+      [cdkDropListConnectedTo]="[todoList, reviewList]"
       (cdkDropListDropped)="drop($event)"
-      [style.height.px]="calculateHeight(cardsInProgress)">
+      [style.height.px]="calculateHeight(cardsInProgress)"
+    >
       IN PROGRESS
       <span class="number-of-tasks">{{ cardsInProgress.length }}</span>
       <div class="content">
         <div *ngFor="let task of cardsInProgress" cdkDrag>
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">{{ task.title }}</h5>
-              <p class="card-text">{{ task.description }}</p>
+              {{ task.title }}
+              {{task.description}}
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="col"
+    <div
+      class="col"
       cdkDropList
       #reviewList="cdkDropList"
       [cdkDropListData]="cardsReview"
-      [cdkDropListConnectedTo]="[todoList, inProgressList, doneList]"
       (cdkDropListDropped)="drop($event)"
-      [style.height.px]="calculateHeight(cardsReview)">
-      REVIEWS
+      cdkDropListDisabled
+      [style.height.px]="calculateHeight(cardsReview)"
+    >
+      REVIEW
       <span class="number-of-tasks">{{ cardsReview.length }}</span>
       <div class="content">
         <div *ngFor="let task of cardsReview" cdkDrag>
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">{{ task.title }}</h5>
-              <p class="card-text">{{ task.description }}</p>
+                {{ task.title }}
+              {{task.description}}
             </div>
           </div>
         </div>
       </div>
+
+      <ng-template #content let-modal>
+        <div class="modal-header text-center">
+          <h4 class="modal-title">Review</h4>
+        </div>
+        <div class="modal-body">
+          Are you sure you want add this task to review?
+          <div class="deadline"></div>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn"
+            #closeModal
+            (click)="onModalClose()"
+            (click)="modal.close('click')"
+          >
+            No
+          </button>
+          <button
+            type="button"
+            class="btn"
+            #closeModal
+            (click)="modal.close('click')"
+          >
+            Yes
+          </button>
+        </div>
+      </ng-template>
     </div>
-    <div class="col"
+    <div
+      class="col"
       cdkDropList
       #doneList="cdkDropList"
       [cdkDropListData]="cardsDone"
       (cdkDropListDropped)="drop($event)"
-      [style.height.px]="calculateHeight(cardsDone)">
+      cdkDropListDisabled
+      [style.height.px]="calculateHeight(cardsDone)"
+    >
       DONE
       <span class="number-of-tasks">{{ cardsDone.length }}</span>
       <div class="content">
         <div *ngFor="let task of cardsDone" cdkDrag>
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">{{ task.title }}</h5>
-              <p class="card-text">{{ task.description }}</p>
+              {{ task.title }}
+              {{task.description}}
             </div>
           </div>
         </div>
@@ -90,4 +128,3 @@
     </div>
   </div>
 </div>
-

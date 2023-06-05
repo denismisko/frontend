@@ -61,8 +61,8 @@ export class TasksComponent implements OnInit {
     });
   }
 
-  openModalDelete(task: any) {
-    this.selectedTask = task;
+  openModalDelete(subject: any) {
+    this.selectedTask = subject;
     this.modalService.open(this.contentDelete, {
       centered: true,
     });

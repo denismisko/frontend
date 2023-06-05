@@ -7,13 +7,14 @@
 .col {
     position: relative;
     max-width:100%;
-    background-color: #323232; 
+    background-color: #2E323B; 
     color: white;
     text-align: left;
     padding: 25px;
     margin: 0 15px;
     max-height: 640px;
     overflow-y: auto;
+    border-radius: 15px;
     
     .number-of-tasks {
         position: relative;
@@ -29,8 +30,6 @@
     }
 }
 
-
-
 ul {
     display: inline-block;
 
@@ -39,6 +38,7 @@ ul {
         display: inline-block;
         padding: 0 15px;
         border-right: 1px solid #000 ;
+        cursor: pointer;
         
         &:last-child {
             border: none;

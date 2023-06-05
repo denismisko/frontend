@@ -14,7 +14,6 @@ export class LoginComponent implements OnInit {
   constructor(
     private auth: AuthService,
     private router: Router,
-    studentService: StudentsService
   ) {}
 
   loginForm = new FormGroup({

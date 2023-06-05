@@ -4,7 +4,7 @@
 
 <div class="classes">
   <ul class="text-center list-group">
-    <li class="list-item" *ngFor="let class of classes">
+    <li class="list-item" *ngFor="let class of classes" (click)="onClassClick(class.class)">
       {{ class.class }}
     </li>
   </ul>
@@ -16,16 +16,42 @@
   <div class="row" *ngFor="let chunk of chunkedLessons">
     <div
       class="col-lg-3 col-md-4 col-sm-6 col-12"
-      *ngFor="let lesson of chunk"
+      *ngFor="let subject of chunk"
     >
       <div class="lesson-container">
-        <h2>{{ lesson.subject }}</h2>
-        <p>{{ lesson.name }}</p>
-        <span class="delete-icon"
-          ><a href="#!"><i class="bi bi-trash3"></i></a
+        <h2>{{ subject.title }}</h2>
+        <span class="delete-icon" (click)="openModal(subject)"
+          ><a><i class="bi bi-trash3"></i></a
         ></span>
       </div>
+
+      <ng-template #content let-modal>
+        <div class="modal-header text-center">
+          <h4 class="modal-title">Delete</h4>
+        </div>
+        <div class="modal-body">
+            <p>Are you sure you want delete task {{ selectedLesson?.title }}?</p>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn close"
+            (click)="modal.close('Close click')"
+          >
+            Close
+          </button>
+           <button
+            type="button"
+            class="btn"
+            (click)="onDeleteSubject(selectedLesson)"
+          >
+            Delete
+          </button>
+        </div>
+      </ng-template>
+
     </div>
+
   </div>
   <div class="submit-btn">
     <button class="btn btn-success" routerLink="add-lesson">

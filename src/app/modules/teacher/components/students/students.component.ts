@@ -61,7 +61,6 @@ export class StudentsComponent {
       } else {
         this.students = [];
       }
-      this.router.navigate(['/teacher/students']);
     });
   }
 

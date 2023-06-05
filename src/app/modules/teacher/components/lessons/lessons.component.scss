@@ -6,6 +6,7 @@
 
 ul {
    @include classes;
+   cursor: pointer;
 }
 
 .classes {
