@@ -4,7 +4,12 @@
 
 <div class="classes">
   <ul class="text-center list-group">
-    <li class="list-item" *ngFor="let class of classes" (click)="onClassClick(class.class)">
+    <li
+      class="list-item"
+      *ngFor="let class of classes"
+      (click)="onClassClick(class.class)"
+      [class.active]="class.class === selectedClassTitle"
+    >
       {{ class.class }}
     </li>
   </ul>
@@ -19,34 +24,41 @@
           *ngFor="let student of students"
           (click)="onSelectedStudent(student)"
         >
-          {{ student.name }} {{ student.surname}}
+          {{ student.name }} {{ student.surname }}
         </li>
       </ul>
     </div>
-    
   </div>
   <div class="text-center">
-    <button class="btn" routerLink="add">
-      Add
-    </button>
+    <button class="btn" routerLink="add">Add</button>
   </div>
   <div class="box box2">
     <div class="information-about-student">
-      <h2>Information about {{ selectedStudentName }} {{ selectedStudentSurname }}</h2>
+      <h2>
+        Information about {{ selectedStudentName }} {{ selectedStudentSurname }}
+      </h2>
       <div class="info">
         <p>{{ selectedStudentName }} {{ selectedStudentSurname }}</p>
         <p>{{ selectedStudentUsername }}</p>
       </div>
     </div>
     <div class="students-edit-delete-btns">
-      <button class="btn btn-primary" routerLink="edit" *ngIf="selectedStudentName">
+      <button
+        class="btn btn-primary"
+        routerLink="edit"
+        *ngIf="selectedStudentName"
+      >
         Edit Student
       </button>
-      <button class="btn btn-danger" *ngIf="selectedStudentName" (click)="openModal(selectedStudentName)">
+      <button
+        class="btn btn-danger"
+        *ngIf="selectedStudentName"
+        (click)="openModal(selectedStudentName)"
+      >
         Delete Student
       </button>
 
-       <ng-template #content let-modal>
+      <ng-template #content let-modal>
         <div class="modal-header text-center">
           <h4 class="modal-title">Delete</h4>
         </div>

@@ -20,6 +20,7 @@ export class ReviewsComponent {
 
   selectedReview: any;
   classTitle!: string | null;
+  selectedClassTitle: any;
 
   @ViewChild('content') content!: ElementRef;
 
@@ -53,6 +54,7 @@ export class ReviewsComponent {
   }
 
   onClassClick(classTitle: string): void {
+    this.selectedClassTitle = classTitle;
     this.reviewService.getReview(classTitle).subscribe((reviews) => {
       if (reviews && reviews.length) {
         this.reviews = reviews;

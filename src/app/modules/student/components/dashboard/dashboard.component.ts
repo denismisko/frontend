@@ -16,7 +16,7 @@ import { StudentDashboardService } from 'src/app/modules/shared/student-dashboar
 })
 export class DashboardComponent implements OnInit {
   dashboardInfo: any;
-  private selectedSubjectTitle: string | null = null;
+  selectedSubjectTitle: string | null = null;
 
   previousContainer?: CdkDropList<Card[]>;
   previousIndex: number = -1;
@@ -60,7 +60,6 @@ export class DashboardComponent implements OnInit {
         event.currentIndex
       );
     } else {
-      // Handle moving between different lists
 
       // Save the task to move and its original status
       this.taskToMove = event.previousContainer.data[event.previousIndex];

@@ -92,3 +92,8 @@ ul {
 .list-item {
     cursor: pointer;
 }
+
+.list-item.active {
+  background-color: #2e323b;
+  color: #fff;
+}

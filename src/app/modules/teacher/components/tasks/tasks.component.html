@@ -4,7 +4,12 @@
 
 <div class="classes" *ngIf="showHeaderAndClasses">
   <ul class="text-center list-group">
-    <li class="list-item" *ngFor="let class of classes" (click)="onClassClick(class.class)">
+    <li
+      class="list-item"
+      *ngFor="let class of classes"
+      (click)="onClassClick(class.class)"
+      [class.active]="class.class === selectedClassTitle"
+    >
       {{ class.class }}
     </li>
   </ul>
@@ -12,22 +17,27 @@
 
 <div
   class="container-fluid text-center d-flex flex-column gap-5 justify-content-center align-items-center"
-  [ngClass]="{ 'student-view': isStudentView }" 
+  [ngClass]="{ 'student-view': isStudentView }"
 >
   <div class="row" *ngFor="let chunk of chunkedTasks">
     <div class="col-lg-3 col-md-4 col-sm-6 col-12" *ngFor="let task of chunk">
-      <h2 class="title">{{ task.Title ? truncateDescription(task.Title, 24) : '' }}</h2>
+      <h2 class="title">
+        {{ task.Title ? truncateDescription(task.Title, 24) : "" }}
+      </h2>
       <p class="lesson-and-class">{{ task.Subject }}</p>
-      <a  (click)="openModal(task)"
-        ><i class="bi bi-caret-down-square"></i
-      ></a>
-      <span class="delete-icon" (click)="openModalDelete(task)" *ngIf="showHeaderAndClasses"
+      <a (click)="openModal(task)"><i class="bi bi-caret-down-square"></i></a>
+      <span
+        class="delete-icon"
+        (click)="openModalDelete(task)"
+        *ngIf="showHeaderAndClasses"
         ><a><i class="bi bi-trash3"></i></a
       ></span>
 
-     <ng-template #content let-modal>
+      <ng-template #content let-modal>
         <div class="modal-header text-center">
-          <h4 class="modal-title">{{ truncateDescription(selectedTask?.Title, 40) }}</h4>
+          <h4 class="modal-title">
+            {{ truncateDescription(selectedTask?.Title, 40) }}
+          </h4>
         </div>
         <div class="modal-body">
           {{ selectedTask?.Description }}
@@ -46,12 +56,15 @@
         </div>
       </ng-template>
 
-       <ng-template #content_delete let-modal>
+      <ng-template #content_delete let-modal>
         <div class="modal-header text-center">
           <h4 class="modal-title">Delete</h4>
         </div>
         <div class="modal-body">
-            <p>Are you sure you want delete task {{ truncateDescription(selectedTask?.Title, 40) }}?</p>
+          <p>
+            Are you sure you want delete task
+            {{ truncateDescription(selectedTask?.Title, 40) }}?
+          </p>
         </div>
         <div class="modal-footer">
           <button
@@ -61,11 +74,7 @@
           >
             Close
           </button>
-           <button
-            type="button"
-            class="btn"
-            (click)="onDeleteTask(task)"
-          >
+          <button type="button" class="btn" (click)="onDeleteTask(task)">
             Delete
           </button>
         </div>

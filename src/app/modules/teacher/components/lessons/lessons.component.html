@@ -4,7 +4,12 @@
 
 <div class="classes">
   <ul class="text-center list-group">
-    <li class="list-item" *ngFor="let class of classes" (click)="onClassClick(class.class)">
+    <li
+      class="list-item"
+      *ngFor="let class of classes"
+      (click)="onClassClick(class.class)"
+      [class.active]="class.class === selectedClassTitle"
+    >
       {{ class.class }}
     </li>
   </ul>
@@ -30,7 +35,7 @@
           <h4 class="modal-title">Delete</h4>
         </div>
         <div class="modal-body">
-            <p>Are you sure you want delete task {{ selectedLesson?.title }}?</p>
+          <p>Are you sure you want delete task {{ selectedLesson?.title }}?</p>
         </div>
         <div class="modal-footer">
           <button
@@ -40,7 +45,7 @@
           >
             Close
           </button>
-           <button
+          <button
             type="button"
             class="btn"
             (click)="onDeleteSubject(selectedLesson)"
@@ -49,9 +54,7 @@
           </button>
         </div>
       </ng-template>
-
     </div>
-
   </div>
   <div class="submit-btn">
     <button class="btn btn-success" routerLink="add-lesson">

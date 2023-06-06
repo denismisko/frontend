@@ -24,6 +24,7 @@ export class TasksComponent implements OnInit {
   chunkedTasks: Tasks[][] = [];
 
   classTitle!: string | null;
+  selectedClassTitle: any;
   selectedTask: any;
 
   @ViewChild('content') content!: ElementRef;
@@ -69,6 +70,7 @@ export class TasksComponent implements OnInit {
   }
 
   onClassClick(classTitle: string): void {
+    this.selectedClassTitle = classTitle;
     this.tasksService.getTask(classTitle).subscribe((tasks) => {
       if (tasks && tasks.length) {
         this.tasks = tasks;

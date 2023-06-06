@@ -1,18 +1,22 @@
 <div class="subjects subjects-container">
   <ul class="text-center list-group">
-    <li class="list-item" *ngFor="let subject of dashboardInfo?.subjects" (click)="onSubjectClick(subject)">
+    <li
+      class="list-item"
+      *ngFor="let subject of dashboardInfo?.subjects, let i = index"
+      (click)="onSubjectClick(subject)"
+      [class.active]="subject === selectedSubjectTitle"
+    >
       {{ subject }}
     </li>
   </ul>
 </div>
-
 
 <div class="container-fluid text-center">
   <div class="row">
     <div
       class="col"
       cdkDropList
-      id="todo" 
+      id="todo"
       #todo="cdkDropList"
       [cdkDropListData]="dashboardInfo?.todo"
       [cdkDropListConnectedTo]="[inProgress]"
@@ -36,7 +40,7 @@
     <div
       class="col"
       cdkDropList
-      id="inProgress" 
+      id="inProgress"
       #inProgress="cdkDropList"
       [cdkDropListData]="dashboardInfo?.inProgress"
       [cdkDropListConnectedTo]="[todo, review]"
@@ -44,7 +48,9 @@
       [style.height.px]="calculateHeight(dashboardInfo?.inProgress)"
     >
       IN PROGRESS
-      <span class="number-of-tasks">{{ dashboardInfo?.inProgress.length }}</span>
+      <span class="number-of-tasks">{{
+        dashboardInfo?.inProgress.length
+      }}</span>
       <div class="content">
         <div *ngFor="let inProgress of dashboardInfo?.inProgress" cdkDrag>
           <div class="card">

@@ -21,6 +21,7 @@ export class StudentsComponent {
 
   selectedStudent: any;
   classTitle!: string | null;
+  selectedClassTitle: any;
 
   constructor(
     private studentsService: StudentsService,
@@ -43,7 +44,7 @@ export class StudentsComponent {
   ngOnInit(): void {
     this.classes = this.classesService.getClasses();
     this.students = this.studentsService.getStudents();
-    this.onClassClick("1.N")
+    this.onClassClick('1.N');
   }
 
   openModal(studentName: string) {
@@ -55,6 +56,7 @@ export class StudentsComponent {
   }
 
   onClassClick(classTitle: string): void {
+    this.selectedClassTitle = classTitle;
     this.studentsService.getStudent(classTitle).subscribe((tasks) => {
       if (tasks && tasks.length) {
         this.students = tasks;
@@ -70,7 +72,9 @@ export class StudentsComponent {
         window.location.reload();
       });
       alert('Student deleted successfully!');
-      this.students = this.students.filter((s) => s.username !== student.username);
+      this.students = this.students.filter(
+        (s) => s.username !== student.username
+      );
     });
   }
 }

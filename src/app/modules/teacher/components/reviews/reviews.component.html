@@ -4,7 +4,12 @@
 
 <div class="classes">
   <ul class="text-center list-group">
-    <li class="list-item" *ngFor="let class of classes" (click)="onClassClick(class.class)">
+    <li
+      class="list-item"
+      *ngFor="let class of classes"
+      (click)="onClassClick(class.class)"
+      [class.active]="class.class === selectedClassTitle"
+    >
       {{ class.class }}
     </li>
   </ul>
@@ -17,19 +22,21 @@
     <div class="col-lg-3 col-md-4 col-sm-6 col-12" *ngFor="let review of chunk">
       <h2 class="title">{{ review.taskName }}</h2>
       <p class="lesson-and-class">{{ review.subject }}</p>
-      <a  (click)="openModal(review)"
-        ><i class="bi bi-caret-down-square"></i
-      ></a>
+      <a (click)="openModal(review)"><i class="bi bi-caret-down-square"></i></a>
 
       <ng-template #content let-modal>
         <div class="modal-header text-center">
-          <h4 class="modal-title">{{ truncateDescription(selectedReview?.taskName, 40) }}</h4>
+          <h4 class="modal-title">
+            {{ truncateDescription(selectedReview?.taskName, 40) }}
+          </h4>
         </div>
         <div class="modal-body">
           {{ selectedReview?.description }}
           <div class="deadline">
             <p>Deadline: {{ selectedReview?.deadline }}</p>
-            <a href="{{' review.link '}}" target="_blank">{{ review.link }}</a>
+            <a href="{{ ' review.link ' }}" target="_blank">{{
+              review.link
+            }}</a>
           </div>
         </div>
         <div class="modal-footer">
@@ -43,7 +50,7 @@
         </div>
       </ng-template>
       <div class="name-of-student">
-        <p>{{review.name}} {{ review.surname }}</p>
+        <p>{{ review.name }} {{ review.surname }}</p>
       </div>
     </div>
   </div>
