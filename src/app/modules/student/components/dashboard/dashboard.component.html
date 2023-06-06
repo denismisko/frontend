@@ -2,7 +2,7 @@
   <ul class="text-center list-group">
     <li
       class="list-item"
-      *ngFor="let subject of dashboardInfo?.subjects, let i = index"
+      *ngFor="let subject of dashboardInfo?.subjects; let i = index"
       (click)="onSubjectClick(subject)"
       [class.active]="subject === selectedSubjectTitle"
     >

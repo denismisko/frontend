@@ -8,6 +8,7 @@ import {
 } from '@angular/cdk/drag-drop';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { StudentDashboardService } from 'src/app/modules/shared/student-dashboard/student-dashboard.service';
+import { findIndex } from 'rxjs';
 
 @Component({
   selector: 'app-dashboard',
@@ -32,6 +33,7 @@ export class DashboardComponent implements OnInit {
     done: '4',
   };
 
+
   @ViewChild('content') content!: ElementRef;
   @ViewChild('closeModal') closeModal!: ElementRef;
 
@@ -42,12 +44,15 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.onGetDashboardInfo();
+ 
   }
 
   onGetDashboardInfo() {
     this.dashboardService.getDashboardInformations().subscribe((response) => {
       this.dashboardInfo = response;
-      console.log(this.dashboardInfo);
+       if (this.dashboardInfo?.subjects?.length) {
+         this.selectedSubjectTitle = this.dashboardInfo.subjects[0];
+       }
     });
   }
 
