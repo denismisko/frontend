@@ -38,16 +38,29 @@ export class StudentsService implements OnInit {
       );
   }
 
-  deleteStudent(username:string): Observable<any> {
+  editStudent(oldUsername: string, newStudent: any) {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
         Authorization: `Bearer ${localStorage.getItem('token')}`,
       }),
-      body: {username: username},
+    };
+
+    const body = { oldStudentUsername: oldUsername, newStudent: newStudent };
+
+    return this.http.put<any>(`${this.apiUrl}/student`, body ,httpOptions);
+  }
+
+  deleteStudent(username: string): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+      }),
+      body: { username: username },
     };
     return this.http.delete(`${this.apiUrl}/student`, httpOptions);
-   }
+  }
 
   students: Students[] = [];
 

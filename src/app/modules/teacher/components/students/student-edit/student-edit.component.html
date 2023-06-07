@@ -5,7 +5,7 @@
 <div class="container col-lg-6 mb-5 mb-lg-0">
   <div class="card">
     <div class="card-body py-5 px-md-5">
-      <form>
+      <form [formGroup]="editedStudentForm" (ngSubmit)="onSubmit()">
         <div class="row">
           <div class="col-md-6 mb-4">
             <div class="form-outline">
@@ -15,6 +15,7 @@
                 id="name"
                 class="form-control"
                 placeholder="First name"
+                formControlName="Name"
               />
             </div>
           </div>
@@ -27,6 +28,7 @@
                 id="surname"
                 class="form-control"
                 placeholder="Last name"
+                formControlName="Surname"
               />
             </div>
           </div>
@@ -40,6 +42,20 @@
                 id="username"
                 class="form-control"
                 placeholder="Username"
+                formControlName="Username"
+              />
+            </div>
+          </div>
+
+          <div class="col-md-6 mb-4">
+            <div class="form-outline mb-4">
+              <label class="form-label" for="username">Password</label>
+              <input
+                type="text"
+                id="username"
+                class="form-control"
+                placeholder="password"
+                formControlName="Password"
               />
             </div>
           </div>
@@ -49,13 +65,18 @@
           <div class="col-md-6 mb-4">
             <div class="form-outline mb-4">
               <label class="form-label" for="select-class">Class</label>
-              <input
-                type="text"
-                name="select-class"
-                class="form-control"
-                placeholder="1.N/2.N/3.N"
-                id="select-class"
-              />
+              <select
+                [(ngModel)]="selectedValue"
+                class="form-select form-control"
+                formControlName="ClassTitle"
+              >
+                <option
+                  *ngFor="let option of ['1.N', '2.N', '3.N']"
+                  [value]="option"
+                >
+                  {{ option }}
+                </option>
+              </select>
             </div>
           </div>
         </div>

@@ -6,6 +6,7 @@ import { StudentsService } from 'src/app/modules/shared/students/students.servic
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import {  Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
+import { SelectedStudent } from 'src/app/modules/shared/students/selected-student/selected-student.service';
 
 @Component({
   selector: 'app-students',
@@ -28,7 +29,8 @@ export class StudentsComponent {
     private classesService: ClassesService,
     private modalService: NgbModal,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private selectedStudentService: SelectedStudent 
   ) {}
 
   selectedStudentName: string = '';
@@ -39,6 +41,8 @@ export class StudentsComponent {
     this.selectedStudentName = student.name;
     this.selectedStudentSurname = student.surname;
     this.selectedStudentUsername = student.username;
+
+    this.selectedStudentService.changeUsername(this.selectedStudentUsername);
   }
 
   ngOnInit(): void {
