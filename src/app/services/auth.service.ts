@@ -31,7 +31,7 @@ export class AuthService implements OnInit {
       });
   }
 
-  private apiUrl = '/api'; // Replace with your backend API URL
+  private apiUrl = 'http://localhost:8080'; // Replace with your backend API URL
 
   constructor(private http: HttpClient, private router: Router) {} // Injected Router
 
