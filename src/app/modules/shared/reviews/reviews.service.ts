@@ -7,7 +7,7 @@ import { Observable, map } from 'rxjs';
   providedIn: 'root',
 })
 export class ReviewsService {
-  private apiUrl = 'http://localhost:8080';
+  private apiUrl = '/api';
 
   constructor(private http: HttpClient) {}
 

@@ -8,7 +8,7 @@ import { TasksComponent } from '../../teacher/components/tasks/tasks.component';
   providedIn: 'root',
 })
 export class TasksService {
-  private apiUrl = 'http://localhost:8080'; // put your API URL here
+  private apiUrl = '/api'; // put your API URL here
 
   constructor(private http: HttpClient) {}
 
