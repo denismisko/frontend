@@ -14,6 +14,8 @@ RUN apk add --no-cache python3 make g++
 
 RUN npm install --arch=arm64 node-sass
 
+RUN npm install bootstrap
+
 RUN npm install
 
 RUN ng build
