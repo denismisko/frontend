@@ -39,7 +39,6 @@ export class TasksComponent implements OnInit {
     private utilityService: UtilityService,
     private modalService: NgbModal,
     private router: Router,
-    private route: ActivatedRoute,
   ) {}
 
   ngOnInit(): void {
@@ -79,7 +78,6 @@ export class TasksComponent implements OnInit {
         this.tasks = [];
         this.chunkedTasks = [];
       }
-       this.router.navigate(['/teacher/tasks']);
     });
   }
 

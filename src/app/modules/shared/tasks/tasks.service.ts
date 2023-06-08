@@ -39,13 +39,13 @@ export class TasksService {
       );
   }
 
-  deleteTask(taskID:string) {
+  deleteTask(taskID: string) {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
         Authorization: `Bearer ${localStorage.getItem('token')}`,
       }),
-      body: { ID: taskID }, 
+      body: { ID: taskID },
     };
     return this.http.delete(`${this.apiUrl}/task`, httpOptions);
   }

@@ -38,7 +38,7 @@ export class LessonsService {
       );
   }
 
-  deleteSubject(title: string, classTitle:string) {
+  deleteSubject(title: string, classTitle: string) {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',

@@ -8,9 +8,7 @@ import { Observable } from 'rxjs';
 export class TeacherDashboardService {
   private apiUrl = '/api';
 
-  constructor(
-    private http: HttpClient
-  ) {}
+  constructor(private http: HttpClient) {}
 
   getDashboardInformations(): Observable<any> {
     const httpOptions = {
@@ -19,6 +17,6 @@ export class TeacherDashboardService {
         Authorization: `Bearer ${localStorage.getItem('token')}`,
       }),
     };
-    return this.http.get<any>(`${this.apiUrl}/teacher/dashboard`, httpOptions)
+    return this.http.get<any>(`${this.apiUrl}/teacher/dashboard`, httpOptions);
   }
 }

@@ -48,7 +48,7 @@ export class StudentsService implements OnInit {
 
     const body = { oldStudentUsername: oldUsername, newStudent: newStudent };
 
-    return this.http.put<any>(`${this.apiUrl}/student`, body ,httpOptions);
+    return this.http.put<any>(`${this.apiUrl}/student`, body, httpOptions);
   }
 
   deleteStudent(username: string): Observable<any> {
