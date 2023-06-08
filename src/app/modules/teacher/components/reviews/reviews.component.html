@@ -31,22 +31,11 @@
           </h4>
         </div>
         <div class="modal-body">
-          {{ selectedReview?.description }}
-          <div class="deadline">
-            <p>Deadline: {{ selectedReview?.deadline }}</p>
-            <a href="{{ ' review.link ' }}" target="_blank">{{
-              review.link
-            }}</a>
-          </div>
+          <p class="text-center" style="margin-bottom: 0 !important;"><a href="https://gitlab.kosickaakademia.sk/trello-gl" target="_blank">https://gitlab.kosickaakademia.sk/trello-gl</a></p>
         </div>
         <div class="modal-footer">
-          <button
-            type="button"
-            class="btn btn-outline-dark"
-            (click)="modal.close('Close click')"
-          >
-            Close
-          </button>
+          <button type="button" class="btn btnred" (click)="reviewFix(review.taskId, review.studentId); modal.close('Close click')">Fix</button>
+          <button type="button" class="btn btngreen" (click)="reviewDone(review.taskId, review.studentId); modal.close('Close click')">Done</button>
         </div>
       </ng-template>
       <div class="name-of-student">

@@ -7,7 +7,7 @@ import { Observable, map } from 'rxjs';
   providedIn: 'root',
 })
 export class StudentsService implements OnInit {
-  private apiUrl = 'http://localhost:8080'; // put your API URL here
+  private apiUrl = '/api'; // put your API URL here
 
   constructor(private http: HttpClient) {}
 

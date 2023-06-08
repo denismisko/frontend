@@ -7,7 +7,7 @@ import { Observable, map } from 'rxjs';
   providedIn: 'root',
 })
 export class ReviewsService {
-  private apiUrl = 'http://localhost:8080';
+  private apiUrl = '/api';
 
   constructor(private http: HttpClient) {}
 
@@ -32,5 +32,39 @@ export class ReviewsService {
 
   getReviews(): Reviews[] {
     return this.reviews;
+  }
+
+  reviewFix(taskID: string, studentID: string) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+      }),
+    };
+
+    const body = { taskID: taskID, studentID: studentID };
+
+    return this.http.put<any>(
+      `${this.apiUrl}/review/fix`,
+      body,
+      httpOptions
+    );
+  }
+
+  reviewDone(taskID: string, studentID: string) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+      }),
+    };
+
+    const body = { taskID: taskID, studentID: studentID };
+
+    return this.http.put<any>(
+      `${this.apiUrl}/review/done`,
+      body,
+      httpOptions
+    );
   }
 }
