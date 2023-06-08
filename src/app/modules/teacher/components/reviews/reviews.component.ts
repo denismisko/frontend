@@ -6,6 +6,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ReviewsService } from 'src/app/modules/shared/reviews/reviews.service';
 import { Reviews } from 'src/app/modules/shared/reviews/reviews';
 import { ActivatedRoute, Router } from '@angular/router';
+import { hasClassName } from '@ng-bootstrap/ng-bootstrap/util/util';
 
 @Component({
   selector: 'app-reviews',
@@ -65,5 +66,27 @@ export class ReviewsComponent {
       }
       this.router.navigate(['/teacher/reviews']);
     });
+  }
+
+  reviewFix(taskID:string, studentID:string) {
+    this.reviewService.reviewFix(taskID,studentID)
+      .subscribe((res: any) => {
+        console.log("Changed status to FIX");
+        this.onClassClick(this.selectedClassTitle);
+      },
+      (err) => {
+        console.log(err);
+      });
+  }
+
+  reviewDone(taskID:string, studentID:string) {
+    this.reviewService.reviewDone(taskID,studentID)
+      .subscribe((res: any) => {
+        console.log("Changed status to DONE");
+        this.onClassClick(this.selectedClassTitle);
+      },
+      (err) => {
+        console.log(err);
+      });
   }
 }
